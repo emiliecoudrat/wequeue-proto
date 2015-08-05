@@ -24,4 +24,15 @@ class Chrono < ActiveRecord::Base
   validates :user, presence: true
   validates :line, presence: true
   validates :checked_in_at, presence: true
+
+  def total_duration
+    if checked_out_at
+      duration = (checked_out_at - checked_in_at).minutes
+    elsif manually_added_duration_in_minutes
+      duration = manually_added_duration_in_minutes
+    else
+      duration = nil
+    end
+    duration
+  end
 end
