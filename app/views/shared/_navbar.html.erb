@@ -39,7 +39,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to t(".sign_in", default: "S'inscrire"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+            <%= link_to t(".sign_in", default: "S'inscrire"), user_omniauth_authorize_path(:facebook), class: "navbar-wagon-item navbar-wagon-link" %>
           </li>
         <% end %>
       </ul>

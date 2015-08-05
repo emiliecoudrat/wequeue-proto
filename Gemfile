@@ -22,6 +22,7 @@ gem "font-awesome-sass"
 gem "rails-i18n"
 gem "devise-i18n"
 gem "devise-i18n-views"
+gem "omniauth-facebook"
 
 group :development, :test do
   gem "spring"
