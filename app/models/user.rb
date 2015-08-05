@@ -32,4 +32,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :chronos
+
+  def cumulated_duration
+    duration = 0
+    chronos.each do |chrono|
+      duration += chrono.total_duration if chrono.total_duration
+    end
+  end
 end
