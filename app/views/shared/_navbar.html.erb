@@ -14,34 +14,28 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to "#", id: "" do %>
-              <div class="icon-badge-container">
-                <%= image_tag "profile-icon.png", width: "50" %> <%= t ".profile", default: "Mon profil" %>
-              </div>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "#" do %>
-              <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "#" do %>
-              <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to t(".sign_in", default: "S'inscrire"), user_omniauth_authorize_path(:facebook), class: "navbar-wagon-item navbar-wagon-link" %>
-          </li>
-        <% end %>
+        <li>
+          <%= link_to "#", id: "" do %>
+            <div class="icon-badge-container">
+              <%= image_tag "profile-icon.png", width: "50" %> <%= t ".profile", default: "Mon profil" %>
+            </div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
+          <% end %>
+        </li>
       </ul>
   </div>
 </nav>
