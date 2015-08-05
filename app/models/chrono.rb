@@ -20,6 +20,7 @@
 class Chrono < ActiveRecord::Base
   belongs_to :user
   belongs_to :line
+  has_many :posts
 
   validates :user, presence: true
   validates :line, presence: true
@@ -34,5 +35,9 @@ class Chrono < ActiveRecord::Base
       duration = nil
     end
     duration
+  end
+
+  def done?
+    total_duration ? true : false
   end
 end
