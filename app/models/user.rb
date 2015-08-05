@@ -18,6 +18,7 @@
 #  first_name             :string
 #  last_name              :string
 #  birthday               :date
+#  city                   :string
 #
 # Indexes
 #
