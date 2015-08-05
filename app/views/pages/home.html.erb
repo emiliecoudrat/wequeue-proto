@@ -4,10 +4,37 @@
 <%= content_for(:description) do %>
   <%# TODO %>
 <% end %>
-<div class="container">
+<div class="container container-home">
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-
+    <div class="col-xs-12">
+      <div class="lead">
+        <%= image_tag "blocmarque_party.png", class: "brand-home" %>
+        <br>
+        <p><%= t '.description', default: "Pour toutes vos sorties : Concrete, Nüba, Rosa Bonheur... Obtenez l'information en live sur les files d'attente et gagnez du temps grâce à notre communauté." %></p>
+      </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="feature">
+        <%= image_tag "people-icon-white.png", class: "feature-icon" %>
+        <p><%= t '.feature_1', default: "Une communauté active" %></p>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="feature">
+        <%= image_tag "dj-icon-white.png", class: "feature-icon" %>
+        <p><%= t '.feature_2', default: "Les meilleurs lieux de sorties" %></p>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="feature">
+        <%= image_tag "timer-icon-white.png", class: "feature-icon" %>
+        <p><%= t '.feature_3', default: "Des informations en temps réel sur les files d'attente" %></p>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
