@@ -14,4 +14,7 @@
 
 class Line < ActiveRecord::Base
   belongs_to :place
+  has_many :chronos
+
+  validates :place, presence: true
 end

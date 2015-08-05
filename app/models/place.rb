@@ -12,4 +12,8 @@
 #
 
 class Place < ActiveRecord::Base
+  has_many :lines
+
+  validates :name, presence: true
+  validates :address, presence: true
 end
