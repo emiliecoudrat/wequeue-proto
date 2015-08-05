@@ -1,28 +1,40 @@
 <%= content_for(:title) do %>
   Home
 <% end %>
-
 <%= content_for(:description) do %>
   <%# TODO %>
 <% end %>
-
-<div class="container">
+<div class="container container-home">
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-      <h1>Welcome!</h1>
-
-      <h2>This is the homepage</h2>
-
-      <p>
-        Find me in <code>app/views/pages/home.html.erb</code>
-      </p>
-
-      <p>
-        Thanks to the <a href="https://github.com/thoughtbot/high_voltage">high_voltage</a>
-        gem, if you need more static pages (like <code>/contact</code> or <code>/about-us</code>),
-        just create a file in the <code>app/views/pages</code> folder, the route will be automatically
-        available without you adding any controller or touching the <code>config/routes.rb</code> file!
-      </p>
+    <div class="col-xs-12">
+      <div class="lead">
+        <%= image_tag "blocmarque_party.png", class: "brand-home" %>
+        <br>
+        <p><%= t '.description', default: "Pour toutes vos sorties : Concrete, Nüba, Rosa Bonheur... Obtenez l'information en live sur les files d'attente et gagnez du temps grâce à notre communauté." %></p>
+      </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="feature">
+        <%= image_tag "people-icon-white.png", class: "feature-icon" %>
+        <p><%= t '.feature_1', default: "Une communauté active" %></p>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="feature">
+        <%= image_tag "dj-icon-white.png", class: "feature-icon" %>
+        <p><%= t '.feature_2', default: "Les meilleurs lieux de sorties" %></p>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="feature">
+        <%= image_tag "timer-icon-white.png", class: "feature-icon" %>
+        <p><%= t '.feature_3', default: "Des informations en temps réel sur les files d'attente" %></p>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>

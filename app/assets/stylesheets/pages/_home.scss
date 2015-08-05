@@ -2,3 +2,30 @@
  * SASS code SPECIFIC TO your home page
  * (margin/padding adjustments, background image, etc..)
  * ------------------------------------- */
+
+.container-home {
+  background-color: #FF5556;
+  color: white;
+  text-align: center;
+  .lead {
+    margin: 15px 15px 30px 15px;
+    .brand-home {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  .feature {
+    margin-bottom: 15px;
+    &-icon {
+      margin-bottom: 15px;
+      width: 120px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
