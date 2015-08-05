@@ -34,6 +34,14 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <%= link_to user_omniauth_authorize_path(:facebook) do %>
+      <div class="fb-connect">
+        <%= image_tag "fb-icon.png", class: "fb-icon" %>
+        <p><%= t '.connect', default: "Se connecter" %></p>
+      </div>
+    <% end %>
+  </div>
 
 
 
