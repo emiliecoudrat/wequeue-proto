@@ -15,6 +15,10 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
+#  birthday               :date
+#  city                   :string
 #
 # Indexes
 #
@@ -27,4 +31,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :chronos
+
+  def cumulated_duration
+    duration = 0
+    chronos.each do |chrono|
+      duration += chrono.total_duration if chrono.total_duration
+    end
+  end
 end
