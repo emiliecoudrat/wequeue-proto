@@ -8,10 +8,12 @@
     width: 100%;
   }
   &-logo {
-    width: 100px;
+    height: 50px;
+    margin-top: 12px;
+    margin-left: 45px;
   }
   &-container {
-    display: flex;
+    display: block;
     height: 70px;
     align-items: center;
   }
