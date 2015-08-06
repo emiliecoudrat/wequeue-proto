@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     root to: "lines#index", as: :authenticated_root
   end
   root to: "pages#home"
+  resources :users, only: :show
+  resources :lines, only: [:create, :show, :update]
 end
