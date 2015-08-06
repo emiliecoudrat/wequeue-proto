@@ -30,6 +30,7 @@ module WequeueProto
       generate.view_specs false
     end
 
+    config.i18n.default_locale = :fr
     config.action_controller.action_on_unpermitted_parameters = :raise
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

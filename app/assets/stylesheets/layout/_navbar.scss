@@ -10,7 +10,7 @@
   &-logo {
     height: 50px;
     margin-top: 12px;
-    margin-left: 45px;
+    margin-left: 50px;
   }
   &-container {
     display: block;
@@ -79,6 +79,7 @@
     }
   }
   &-dropdown-menu {
+    background-color: $red;
     margin-top: 15px;
     box-shadow: 1px 1px 4px #E6E6E6;
     border-color: #E6E6E6;
@@ -107,12 +108,43 @@
       border-top: 1px solid #E6E6E6;
     }
   }
-
   hr {
     height: 12px;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.2);
     margin-left: 10px;
     margin-right: 10px;
+  }
+  .dropdown-menu {
+    background-color: $red;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    >li>a {
+      color: white;
+      padding: 8px 20px;
+      font-weight: 300;
+      i {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+.navbar-toggle {
+  margin-top: 17px;
+  margin-right: 5px;
+  .icon-bar {
+    background-color: white;
+    border-radius: 10px;
+    height: 3px;
+    width: 27px;
+    border: 2px solid white;
   }
 }
