@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :users, only: :show
   resources :lines, only: [:create, :show, :update]
+  get 'search', to: "lines#search", as: :search_line
 end
