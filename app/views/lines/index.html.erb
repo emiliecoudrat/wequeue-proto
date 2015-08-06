@@ -1,10 +1,15 @@
 <div class="search text-center">
-  <%= form_tag search_line_path, id: "search-form" do %>
+  <%= form_tag search_line_path, method: :get, id: "search-form" do %>
     <div class="form-group">
       <%= label_tag :place, "Chercher une file d'attente", class: "text-red" %>
       <%= text_field_tag :place, nil, placeholder: "ex : Concrete", class: "form-control", id: "user_input_autocomplete_address" %>
       <%= hidden_field_tag :latitude %>
       <%= hidden_field_tag :longitude %>
+      <%= hidden_field_tag :street_number %>
+      <%= hidden_field_tag :route %>
+      <%= hidden_field_tag :postal_code %>
+      <%= hidden_field_tag :locality %>
+      <%= hidden_field_tag :country %>
     </div>
   <% end %>
 </div>
