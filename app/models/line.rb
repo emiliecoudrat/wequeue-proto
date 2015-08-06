@@ -17,4 +17,8 @@ class Line < ActiveRecord::Base
   has_many :chronos
 
   validates :place, presence: true
+
+  def creation_time_from_now_in_hours
+    (TIme.now - created_at).fdiv(3600)
+  end
 end
