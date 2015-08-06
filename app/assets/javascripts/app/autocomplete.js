@@ -26,4 +26,5 @@ function onPlaceChanged() {
       }
     }
   }
+  $('form').submit()
 }

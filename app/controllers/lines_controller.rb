@@ -11,6 +11,7 @@ class LinesController < ApplicationController
   def search
     @place = Place.find_or_create_by(name: search_params[:place].split(",").first, address: "#{search_params[:street_number]} #{search_params[:route]}, #{search_params[:postal_code]}")
     @line = Line.find_or_create_by(place: @place, created_at: (Time.now - 1.day)..Time.now)
+    redirect_to line_path(@line)
   end
 
   def show
