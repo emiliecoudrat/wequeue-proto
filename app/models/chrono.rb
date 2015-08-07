@@ -28,9 +28,9 @@ class Chrono < ActiveRecord::Base
 
   def total_duration
     if checked_out_at
-      duration = (checked_out_at - checked_in_at).minutes
+      duration = (checked_out_at - checked_in_at).seconds
     elsif manually_added_duration_in_minutes
-      duration = manually_added_duration_in_minutes
+      duration = manually_added_duration_in_minutes * 60
     else
       duration = nil
     end

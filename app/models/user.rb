@@ -55,10 +55,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def cumulated_duration
+  def cumulated_duration_in_seconds
     duration = 0
     chronos.each do |chrono|
-      duration += chrono.total_duration if chrono.total_duration
+      duration += chrono.total_duration if chrono.done?
     end
+    duration
+  end
+
+  def cumulated_duration_in_string
+    "#{(cumulated_duration_in_seconds / 3600) < 10 ? "0" + (cumulated_duration_in_seconds / 3600).to_s : cumulated_duration_in_seconds / 3600}:#{(cumulated_duration_in_seconds % 3600 / 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60).to_s : cumulated_duration_in_seconds % 3600 / 60}:#{(cumulated_duration_in_seconds % 3600 / 60 % 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60 % 60).to_s : cumulated_duration_in_seconds % 3600 / 60 % 60}"
   end
 end
