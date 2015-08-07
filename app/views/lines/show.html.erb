@@ -34,9 +34,23 @@
                     <%= t '.checkin', default: "Checkin : " %><%= l chrono.created_at, format: '%Hh%M' %>
                   </div>
                   <div class="since">
-                    <%= t '.since', default: "Dans la queue depuis : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                    <%= t '.since', default: "Dans la queue depuis " %><span class='text-red'><%= chrono.duration_in_string %></span>
                   </div>
                 </div>
+              </div>
+              <div class="row">
+                <% chrono.posts.each do |post| %>
+                  <div class="col-xs-12">
+                    <div class="post">
+                      <div class="post-content">
+                        <%= simple_format "« " + post.content + " »" %>
+                      </div>
+                      <div class="post-picture">
+                        <%= image_tag post.picture.url(:medium) %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -46,12 +60,16 @@
   </div>
 </div>
 <footer>
-  <% unless @line.waiting_time %>
-    <div class="popup-helper slideDown">
-      <a class="close-white"><span>&times;</span></a>
+  <div class="popup-helper slideDown">
+    <a class="close-white"><span>&times;</span></a>
+    <% if @line.chronos.size == 0 %>
+      <%= t '.first', default: "Soyez le premier à vous signaler dans la file d'attente." %>
+    <% elsif !@line.has_a_running_chrono_with(current_user) %>
       <%= t '.signal', default: "Signalez-vous dans la file d'attente." %>
-    </div>
-  <% end %>
+    <% else %>
+      <%= t '.signal', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
+    <% end %>
+  </div>
   <%= link_to authenticated_root_path do %>
     <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
   <% end %>

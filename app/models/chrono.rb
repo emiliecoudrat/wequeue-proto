@@ -27,7 +27,7 @@ class Chrono < ActiveRecord::Base
   validates :checked_in_at, presence: true
 
   def duration_since_checkin
-    (DateTime.now - checked_in_at).seconds
+    (Time.now - checked_in_at).seconds
   end
 
   def total_duration
@@ -43,5 +43,9 @@ class Chrono < ActiveRecord::Base
 
   def done?
     total_duration ? true : false
+  end
+
+  def duration_in_string
+    "#{(duration_since_checkin / 3600) < 10 ? "0" + (duration_since_checkin / 3600).floor.to_s : (duration_since_checkin / 3600).floor}:#{(duration_since_checkin % 3600 / 60) < 10 ? "0" + (duration_since_checkin % 3600 / 60).floor.to_s : (duration_since_checkin % 3600 / 60).floor}:#{((duration_since_checkin % 3600 % 60)) < 10 ? "0" + ((duration_since_checkin % 3600 % 60)).floor.to_s : ((duration_since_checkin % 3600 % 60)).floor}"
   end
 end

@@ -45,17 +45,34 @@
     margin: 15px -5px;
     .chrono {
       padding: 15px;
-      border: 1px solid black;
+      border: 1px solid $gray;
       border-radius: 15px;
+      .row {
+        border-bottom: 1px solid $gray;
+      }
       .user-name {
         color: $red;
         font-weight: 700;
       }
       .user-avatar {
         margin-top: 5px;
+        margin-bottom: 15px;
         img {
           width: 60px;
           border-radius: 50%;
+        }
+      }
+      .post {
+        margin-top: 15px;
+        &-content {
+          text-align: left;
+        }
+        &-picture {
+          margin-left: -15px;
+          margin-right: -15px;
+          img {
+            width: 100%
+          }
         }
       }
     }

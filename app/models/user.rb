@@ -64,6 +64,6 @@ class User < ActiveRecord::Base
   end
 
   def cumulated_duration_in_string
-    "#{(cumulated_duration_in_seconds / 3600) < 10 ? "0" + (cumulated_duration_in_seconds / 3600).to_s : cumulated_duration_in_seconds / 3600}:#{(cumulated_duration_in_seconds % 3600 / 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60).to_s : cumulated_duration_in_seconds % 3600 / 60}:#{(cumulated_duration_in_seconds % 3600 / 60 % 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60 % 60).to_s : cumulated_duration_in_seconds % 3600 / 60 % 60}"
+    "#{(cumulated_duration_in_seconds / 3600) < 10 ? "0" + (cumulated_duration_in_seconds / 3600).floor.to_s : (cumulated_duration_in_seconds / 3600).floor}:#{(cumulated_duration_in_seconds % 3600 / 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60).floor.to_s : (cumulated_duration_in_seconds % 3600 / 60).floor}:#{((cumulated_duration_in_seconds % 3600 % 60)) < 10 ? "0" + ((cumulated_duration_in_seconds % 3600 % 60)).floor.to_s : ((cumulated_duration_in_seconds % 3600 % 60)).floor}"
   end
 end
