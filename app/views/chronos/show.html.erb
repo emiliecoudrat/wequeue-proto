@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="chrono-show">
+        <p class="line-name"><%= @chrono.line.place.name %></p>
+        <div class="waiting-since">
+          <p>
+            <%= t '.waiting-since', default: "Vous attendez depuis" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="popup-helper slideDown">
+    <a class="close-white"><span>&times;</span></a>
+    <% unless @chrono.done? %>
+      <%= t '.checkout', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
+    <% end %>
+  </div>
+  <%= link_to authenticated_root_path do %>
+    <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
+  <% end %>
+  <%= form_for @chrono, url: stop_chrono_path(@chrono), method: :get do |f| %>
+    <%= image_tag 'step-button.png', class: "steps-center", id: "action-chrono" %>
+    <%= f.submit 'stop', class: 'hidden' %>
+  <% end %>
+</footer>

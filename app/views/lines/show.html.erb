@@ -64,10 +64,10 @@
     <a class="close-white"><span>&times;</span></a>
     <% if @line.chronos.size == 0 %>
       <%= t '.first', default: "Soyez le premier à vous signaler dans la file d'attente." %>
-    <% elsif !@line.has_a_running_chrono_with(current_user) %>
-      <%= t '.signal', default: "Signalez-vous dans la file d'attente." %>
+    <% elsif !@line.has_a_running_chrono_with?(current_user) %>
+      <%= t '.checkin', default: "Signalez-vous dans la file d'attente." %>
     <% else %>
-      <%= t '.signal', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
+      <%= t '.checkout', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
     <% end %>
   </div>
   <%= link_to authenticated_root_path do %>

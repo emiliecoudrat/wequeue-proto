@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get 'chronos/:chrono_id/posts/new', to: "posts#new", as: :new_chrono_post
   post 'chronos/:chrono_id/posts', to: "posts#create", as: :chrono_posts
   get 'search', to: "lines#search", as: :search_line
+  resources :chronos, only: :show
+  get 'chronos/:id/stop', to: "chronos#stop", as: :stop_chrono
 end

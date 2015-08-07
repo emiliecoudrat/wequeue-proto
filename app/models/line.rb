@@ -25,7 +25,7 @@ class Line < ActiveRecord::Base
   def waiting_time
   end
 
-  def has_a_running_chrono_with(user)
+  def has_a_running_chrono_with?(user)
     chronos.map { |chrono| chrono.user unless chrono.done? }.include?(user)
   end
 end

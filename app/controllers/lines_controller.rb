@@ -2,10 +2,14 @@ class LinesController < ApplicationController
   before_action :set_line, only: :show
 
   def index
-    @lines = Line.find_each { |line| line.creation_time_from_now_in_hours < 12 }
-    @markers = Gmaps4rails.build_markers(@lines) do |line, marker|
-      marker.lat line.place.latitude
-      marker.lng line.place.longitude
+    if current_user.running_chrono
+      redirect_to chrono_path(current_user.running_chrono)
+    else
+      @lines = Line.find_each { |line| line.creation_time_from_now_in_hours < 12 }
+      @markers = Gmaps4rails.build_markers(@lines) do |line, marker|
+        marker.lat line.place.latitude
+        marker.lng line.place.longitude
+      end
     end
   end
 

@@ -1,0 +1,11 @@
+.chrono-show {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 120px;
+  .line-name {
+    font-size: 20px;
+  }
+  .waiting-since {
+    color: $red;
+  }
+}

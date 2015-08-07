@@ -10,4 +10,13 @@ class ChronosController < ApplicationController
       flash.keep[:alert] = "Le chrono n'a pas été lancé, réessayez !"
     end
   end
+
+  def show
+    @chrono = Chrono.find(params[:id])
+  end
+
+  def stop
+    @chrono.checked_out_at = DateTime.now
+    @chrono.save
+  end
 end

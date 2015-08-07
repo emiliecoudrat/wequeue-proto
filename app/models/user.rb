@@ -66,4 +66,8 @@ class User < ActiveRecord::Base
   def cumulated_duration_in_string
     "#{(cumulated_duration_in_seconds / 3600) < 10 ? "0" + (cumulated_duration_in_seconds / 3600).floor.to_s : (cumulated_duration_in_seconds / 3600).floor}:#{(cumulated_duration_in_seconds % 3600 / 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60).floor.to_s : (cumulated_duration_in_seconds % 3600 / 60).floor}:#{((cumulated_duration_in_seconds % 3600 % 60)) < 10 ? "0" + ((cumulated_duration_in_seconds % 3600 % 60)).floor.to_s : ((cumulated_duration_in_seconds % 3600 % 60)).floor}"
   end
+
+  def running_chrono
+    Chrono.find_by(user: self, checked_out_at: nil, manually_added_duration_in_minutes: nil)
+  end
 end
