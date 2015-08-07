@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="line-show">
+        <p class="line-name"><%= @line.place.name %></p>
+        <% if @line.waiting_time %>
+        <% else %>
+          <p class="line-info">
+            <%= t '.no_info', default: "Nous n'avons pas assez d'information pour estimer le temps d'attente actuel." %>
+          </p>
+          <div class="outer-circle">
+            <div class="inner-circle">
+              ?
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <% unless @line.waiting_time %>
+    <div class="popup-helper slideDown">
+      <a class="close-white"><span>&times;</span></a>
+      <%= t '.signal', default: "Signalez-vous dans la file d'attente." %>
+    </div>
+  <% end %>
+  <%= link_to authenticated_root_path do %>
+    <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
+  <% end %>
+  <%= link_to "#" do %>
+    <%= image_tag 'step-button.png', class: "steps-center" %>
+  <% end %>
+</footer>

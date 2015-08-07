@@ -26,7 +26,9 @@ function onPlaceChanged() {
       }
     }
   }
-  $('form').submit()
+  setTimeout(function() {
+    $('form').submit()
+  }, 100)
 }
 
 function preventSubmit() {

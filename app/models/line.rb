@@ -21,4 +21,7 @@ class Line < ActiveRecord::Base
   def creation_time_from_now_in_hours
     (Time.now - created_at).fdiv(3600)
   end
+
+  def waiting_time
+  end
 end

@@ -1,5 +1,5 @@
 class LinesController < ApplicationController
-  before_action :set_line, only: :show
+  before_action :set_line, only: [:show, :start_chrono]
   def index
     @lines = Line.find_each { |line| line.creation_time_from_now_in_hours < 12 }
     @markers = Gmaps4rails.build_markers(@lines) do |line, marker|
@@ -9,8 +9,8 @@ class LinesController < ApplicationController
   end
 
   def search
-    @place = Place.find_or_create_by(name: search_params[:place].split(",").first, address: "#{search_params[:street_number]} #{search_params[:route]}, #{search_params[:postal_code]}") if search_params[:latitude]
-    @line = Line.find_or_create_by(place: @place, created_at: (Time.now - 1.day)..Time.now) if search_params[:latitude]
+    @place = Place.find_or_create_by(name: search_params[:place].split(",").first, address: "#{search_params[:street_number]} #{search_params[:route]}, #{search_params[:postal_code]}") if search_params[:route]
+    @line = Line.find_or_create_by(place: @place, created_at: (Time.now - 1.day)..Time.now) if search_params[:route]
     @line ? (redirect_to line_path(@line)) : (render :index)
   end
 
@@ -23,6 +23,23 @@ class LinesController < ApplicationController
     @posts.flatten!
   end
 
+  def start_chrono
+    @chrono = Chrono.new(line: @line, user: current_user, checked_in_at: Datetime.now)
+    if @chrono.save
+      redirect_to
+  end
+
+  def new_post
+    @chrono = Chrono.find(params[:chrono_id])
+    @post = Post.new
+  end
+
+  def create_post
+    @chrono = Chrono.find(params[:chrono_id])
+    @post = Post.new(chrono: @chrono, )
+
+  end
+
   private
 
   def set_line
@@ -31,5 +48,9 @@ class LinesController < ApplicationController
 
   def search_params
     params.permit(:utf8, :place, :latitude, :longitude, :street_number, :route, :postal_code, :locality, :country, :controller, :action)
+  end
+
+  def post_params
+    params.require(:post).permit(:content, :picture)
   end
 end
