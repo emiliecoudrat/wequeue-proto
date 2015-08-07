@@ -14,6 +14,33 @@
             </div>
           </div>
         <% end %>
+        <div class="chronos-stream">
+          <% @chronos.each  do |chrono| %>
+            <div class="chrono">
+              <div class="row">
+                <div class="col-xs-4 text-left">
+                  <div class="user-name">
+                    <%= chrono.user.first_name.upcase %>
+                  </div>
+                  <div class="user-avatar">
+                    <%= image_tag chrono.user.picture %>
+                  </div>
+                </div>
+                <div class="col-xs-8 text-right">
+                  <div class="date">
+                    <%= t '.date', default: "Date : " %><%= l chrono.created_at, format: '%d %B %Y' %>
+                  </div>
+                  <div class="checkin">
+                    <%= t '.checkin', default: "Checkin : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                  </div>
+                  <div class="since">
+                    <%= t '.since', default: "Dans la queue depuis : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -28,7 +55,8 @@
   <%= link_to authenticated_root_path do %>
     <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
   <% end %>
-  <%= link_to "#" do %>
-    <%= image_tag 'step-button.png', class: "steps-center" %>
+  <%= form_for @chrono do |f| %>
+    <%= image_tag 'step-button.png', class: "steps-center", id: "launch-timer" %>
+    <%= f.submit 'launch', class: 'hidden' %>
   <% end %>
 </footer>

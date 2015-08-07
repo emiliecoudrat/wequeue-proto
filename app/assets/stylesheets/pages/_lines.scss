@@ -3,6 +3,7 @@
   #search-form {
     padding: 0 15px;
     .form-control {
+      box-shadow: none;
       border: 2px solid $red;
       border-radius: 10px;
       padding: 15px 20px;
@@ -38,6 +39,25 @@
       color: $red;
       font-weight: 700;
       font-size: 26px;
+    }
+  }
+  .chronos-stream {
+    margin: 15px -5px;
+    .chrono {
+      padding: 15px;
+      border: 1px solid black;
+      border-radius: 15px;
+      .user-name {
+        color: $red;
+        font-weight: 700;
+      }
+      .user-avatar {
+        margin-top: 5px;
+        img {
+          width: 60px;
+          border-radius: 50%;
+        }
+      }
     }
   }
 }

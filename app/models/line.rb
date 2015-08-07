@@ -19,7 +19,7 @@ class Line < ActiveRecord::Base
   validates :place, presence: true
 
   def creation_time_from_now_in_hours
-    (Time.now - created_at).fdiv(3600)
+    (DateTime.now - created_at).fdiv(3600)
   end
 
   def waiting_time
