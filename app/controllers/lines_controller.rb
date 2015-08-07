@@ -9,9 +9,9 @@ class LinesController < ApplicationController
   end
 
   def search
-    @place = Place.find_or_create_by(name: search_params[:place].split(",").first, address: "#{search_params[:street_number]} #{search_params[:route]}, #{search_params[:postal_code]}")
-    @line = Line.find_or_create_by(place: @place, created_at: (Time.now - 1.day)..Time.now)
-    redirect_to line_path(@line)
+    @place = Place.find_or_create_by(name: search_params[:place].split(",").first, address: "#{search_params[:street_number]} #{search_params[:route]}, #{search_params[:postal_code]}") if search_params[:latitude]
+    @line = Line.find_or_create_by(place: @place, created_at: (Time.now - 1.day)..Time.now) if search_params[:latitude]
+    @line ? (redirect_to line_path(@line)) : (render :index)
   end
 
   def show
