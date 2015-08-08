@@ -41,6 +41,18 @@ class Chrono < ActiveRecord::Base
     duration
   end
 
+  def hours
+    ((Time.now - checked_in_at) / 3600).floor
+  end
+
+  def minutes
+    (((Time.now - checked_in_at) - 3600 * hours) / 60).floor
+  end
+
+  def seconds
+    ((Time.now - checked_in_at) - 3600 * hours - 60 * minutes).floor
+  end
+
   def done?
     total_duration ? true : false
   end

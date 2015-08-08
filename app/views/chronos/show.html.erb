@@ -6,6 +6,11 @@
         <div class="waiting-since">
           <p>
             <%= t '.waiting-since', default: "Vous attendez depuis" %>
+            <div id="timer-frame">
+              <div id="timer">
+                <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+              </div>
+            </div>
           </p>
         </div>
       </div>
@@ -27,3 +32,12 @@
     <%= f.submit 'stop', class: 'hidden' %>
   <% end %>
 </footer>
+
+<%= content_for :after_js do %>
+  <%= javascript_tag do %>
+    var h = <%= @chrono.hours %>
+    var m = <%= @chrono.minutes %>
+    var s = <%= @chrono.seconds %>
+    chrono(h, m, s)
+  <% end %>
+<% end %>
