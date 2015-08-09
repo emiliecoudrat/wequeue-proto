@@ -17,7 +17,13 @@ function chrono(h, m, s) {
       }
     }
     $('#hours').text(h)
+    if(String(m).length == 1) {
+      m = '0' + String(m);
+    }
     $('#minutes').text(m)
+    if(s.length == 1) {
+      s = '0' + String(s);
+    }
     $('#seconds').text(s)
     if(s <= 30) {
       var orientation = Math.floor(90 + 6 * s )

@@ -8,7 +8,7 @@
             <%= t '.waiting-since', default: "Vous attendez depuis" %>
             <div id="timer-frame">
               <div id="timer">
-                <span id="hours"><%= @chrono.hours %></span>:<span id="minutes"><%= @chrono.minutes %></span>:<span id="seconds"><%= @chrono.seconds %></span>
+                <span id="hours"><%= @chrono.hours %></span>:<span id="minutes"><%= @chrono.minutes.to_s.size == 1 ? "0" + @chrono.minutes.to_s : @chrono.minutes %></span>:<span id="seconds"><%= @chrono.seconds.to_s.size == 1 ? "0" + @chrono.seconds.to_s : @chrono.seconds %></span>
               </div>
             </div>
           </p>
