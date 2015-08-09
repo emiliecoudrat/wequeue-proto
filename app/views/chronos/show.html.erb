@@ -28,7 +28,7 @@
     <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
   <% end %>
   <%= form_for @chrono, url: stop_chrono_path(@chrono), method: :get do |f| %>
-    <%= image_tag 'step-button.png', class: "steps-center", id: "action-chrono" %>
+    <%= image_tag 'step-button.png', class: "steps-center", id: "action-timer" %>
     <%= f.submit 'stop', class: 'hidden' %>
   <% end %>
 </footer>

@@ -27,7 +27,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 1px solid $gray-light;
+    border: 1px solid $red;
     .inner-circle {
       margin: 0 auto;
       margin-top: 17px;
@@ -35,10 +35,31 @@
       width: 65px;
       height: 65px;
       border-radius: 50%;
-      border: 1px solid $gray-light;
+      border: 1px solid $red;
       color: $red;
       font-weight: 700;
       font-size: 26px;
+    }
+  }
+  #timer-frame {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid $red;
+    background-color: $red;
+    #timer {
+      margin: 0 auto;
+      margin-top: 17px;
+      padding-top: 3px;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      border: 1px solid $red;
+      color: $red;
+      font-weight: 500;
+      font-size: 20px;
+      background-color: white;
     }
   }
   .chronos-stream {

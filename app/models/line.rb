@@ -13,16 +13,17 @@
 #
 
 class Line < ActiveRecord::Base
-  belongs_to :place
+  belongs_to :place, dependent: :destroy
   has_many :chronos
 
   validates :place, presence: true
 
   def creation_time_from_now_in_hours
-    (DateTime.now - created_at).fdiv(3600)
+    (Time.now - created_at).fdiv(3600)
   end
 
   def waiting_time
+    chronos.select { |chrono| chrono.done? }.sort_by(&:checked_out_at).last.total_duration.fdiv(60).floor if chronos.first
   end
 
   def has_a_running_chrono_with?(user)

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="chrono-stop">
+        <p class="line-name"><%= @chrono.line.place.name %></p>
+        <div class="waiting-since">
+          <p>
+            <%= t '.waiting-since', default: "Vous attendez depuis" %>
+            <div id="timer-frame">
+              <div id="timer">
+                <span id="hours"><%= @chrono.hours %></span>:<span id="minutes"><%= @chrono.minutes %></span>:<span id="seconds"><%= @chrono.seconds %></span>
+              </div>
+            </div>
+          </p>
+        </div>
+        <div class="actions">
+          <div class="row">
+            <div class="col-xs-4 text-right">
+              <%= link_to t('.confirm', default: "Oui, je valide"), thanks_path, class: "btn btn-red" %>
+            </div>
+            <div class="col-xs-4">
+              <%= link_to t('.oups', default: "Oups, pas fini"), restart_chrono_path(@chrono), class: "btn btn-red" %>
+            </div>
+            <div class="col-xs-4 text-left">
+              <%= link_to t('.manual', default: "Non, j'ajuste"), edit_chrono_path(@chrono), class: "btn btn-red" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <%= link_to authenticated_root_path do %>
+    <%= image_tag 'small-loupe-icon.png', class: "search-central" %>
+  <% end %>
+</footer>

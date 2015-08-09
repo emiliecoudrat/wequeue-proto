@@ -18,7 +18,7 @@
 #
 
 class Post < ActiveRecord::Base
-  belongs_to :chrono
+  belongs_to :chrono, dependent: :destroy
 
   validates :chrono, presence: true
 

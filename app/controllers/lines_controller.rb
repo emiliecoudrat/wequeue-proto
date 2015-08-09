@@ -5,7 +5,7 @@ class LinesController < ApplicationController
     if current_user.running_chrono
       redirect_to chrono_path(current_user.running_chrono)
     else
-      @lines = Line.find_each { |line| line.creation_time_from_now_in_hours < 12 }
+      @lines = Line.select { |line| line.creation_time_from_now_in_hours < 12 }
       @markers = Gmaps4rails.build_markers(@lines) do |line, marker|
         marker.lat line.place.latitude
         marker.lng line.place.longitude
@@ -21,11 +21,6 @@ class LinesController < ApplicationController
 
   def show
     @chronos = @line.chronos
-    @posts = []
-    @chronos.each do |chrono|
-      @posts << chrono.posts
-    end
-    @posts.flatten!
     @chrono = Chrono.new
   end
 

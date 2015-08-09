@@ -31,27 +31,39 @@ function chrono(h, m, s) {
   }, 1000);
 }
 
+function line(minutes) {
+  $(document).ready(function() {
+    var timer = document.getElementById('timer-frame');
+    if(timer) {
+      if(minutes > 60) {
+        var value = 'none'
+      } else if(minutes > 30) {
+        var orientation = Math.floor(90 + 6 * (minutes - 30))
+        var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FF5556 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
+      } else {
+        var orientation = Math.floor(90 + 6 * minutes)
+        var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FFFFFF 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
+      }
+      timer.style.backgroundImage = value;
+    }
+  })
+}
+
 function getCssValuePrefix() {
   var rtrnVal = '';//default to standard syntax
   var prefixes = ['-o-', '-ms-', '-moz-', '-webkit-'];
-
   // Create a temporary DOM object for testing
   var dom = document.createElement('div');
-
   for (var i = 0; i < prefixes.length; i++)
   {
-      // Attempt to set the style
-      dom.style.background = prefixes[i] + 'linear-gradient(#000000, #ffffff)';
-
-      // Detect if the style was successfully set
-      if (dom.style.background)
-      {
-          rtrnVal = prefixes[i];
-      }
+    // Attempt to set the style
+    dom.style.background = prefixes[i] + 'linear-gradient(#000000, #ffffff)';
+    // Detect if the style was successfully set
+    if (dom.style.background) {
+        rtrnVal = prefixes[i];
+    }
   }
-
   dom = null;
   delete dom;
-
   return rtrnVal;
 }

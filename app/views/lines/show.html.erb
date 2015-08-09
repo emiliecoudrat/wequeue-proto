@@ -4,6 +4,17 @@
       <div class="line-show">
         <p class="line-name"><%= @line.place.name %></p>
         <% if @line.waiting_time %>
+          <p class="line-info">
+            <%= t '.estimate', default: "Attente estimée actuellement" %>
+          </p>
+          <div id="timer-frame">
+            <div id="timer">
+              <%= @line.waiting_time %>
+              <div class="min">
+                min
+              </div>
+            </div>
+          </div>
         <% else %>
           <p class="line-info">
             <%= t '.no_info', default: "Nous n'avons pas assez d'information pour estimer le temps d'attente actuel." %>
@@ -33,9 +44,18 @@
                   <div class="checkin">
                     <%= t '.checkin', default: "Checkin : " %><%= l chrono.created_at, format: '%Hh%M' %>
                   </div>
-                  <div class="since">
-                    <%= t '.since', default: "Dans la queue depuis " %><span class='text-red'><%= chrono.duration_in_string %></span>
-                  </div>
+                  <% if chrono.total_duration %>
+                    <div class="checkout">
+                      <%= t '.checkout', default: "Checkout : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
+                    </div>
+                    <div class="total">
+                      <%= t '.total', default: "Durée : " %><span class='text-red'><%= chrono.total_duration_in_string %></span>
+                    </div>
+                  <% else %>
+                    <div class="since">
+                      <%= t '.since', default: "Dans la queue depuis " %><span class='text-red'><%= chrono.duration_in_string %></span>
+                    </div>
+                  <% end %>
                 </div>
               </div>
               <div class="row">
@@ -74,7 +94,13 @@
     <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
   <% end %>
   <%= form_for @chrono do |f| %>
-    <%= image_tag 'step-button.png', class: "steps-center", id: "launch-timer" %>
+    <%= image_tag 'step-button.png', class: "steps-center", id: "action-timer" %>
     <%= f.submit 'launch', class: 'hidden' %>
   <% end %>
 </footer>
+
+<%= content_for :after_js do %>
+  <%= javascript_tag do %>
+    line(<%= @line.waiting_time %>)
+  <% end %>
+<% end %>
