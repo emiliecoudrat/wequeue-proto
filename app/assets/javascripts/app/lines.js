@@ -8,7 +8,7 @@ $('#action-timer').on('click', function() {
 
 $(document).ready(function() {
   if($('#map').length > 0) {
-    var mapHeight = $(window).height() - $('nav').height() - 20 - $('.search').height() - $('footer').height();
+    var mapHeight = $(window).height() - 73 - 20 - $('.search').height() - $('footer').height();
     $('#map').height(mapHeight);
     $('#map').on('click', function() {
       $.each($('.infowindow'), function(index, item) {

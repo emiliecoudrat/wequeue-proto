@@ -33,6 +33,8 @@ class ChronosController < ApplicationController
   end
 
   def edit
+    @chrono.checked_out_at = nil
+    @chrono.save
   end
 
   def update

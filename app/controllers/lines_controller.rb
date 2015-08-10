@@ -65,7 +65,7 @@ class LinesController < ApplicationController
   end
 
   def show
-    @chronos = @line.chronos
+    @chronos = @line.chronos.sort_by(&:created_at).reverse
     @chrono = Chrono.new
   end
 
