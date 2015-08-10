@@ -27,6 +27,7 @@ gem "omniauth-facebook"
 gem "geocoder"
 gem "gmaps4rails"
 gem "rails-assets-underscore"
+gem 'bootstrap-slider-rails'
 
 group :development, :test do
   gem "spring"

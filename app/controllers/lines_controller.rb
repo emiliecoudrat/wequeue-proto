@@ -12,7 +12,7 @@ class LinesController < ApplicationController
         if line.waiting_time.nil?
           marker.picture url: ActionController::Base.helpers.asset_path("small-green-steps.png"), width: 50, height: 48
           marker.infowindow "
-            <div class='infowindow'>
+            <div class='infowindow' style='background-color:#248F2E'>
               <a class='close-white'><span>&times;</span></a>
               <a href='#{line_path(line)}'>
                 <div class='title'>#{line.place.name}</div>
@@ -23,33 +23,33 @@ class LinesController < ApplicationController
         elsif line.waiting_time > 60
           marker.picture url: ActionController::Base.helpers.asset_path("small-red-steps.png"), width: 50, height: 48
           marker.infowindow "
-            <div class='infowindow'>
+            <div class='infowindow' style='background-color:#FF5556'>
               <a class='close-white'><span>&times;</span></a>
               <a href='#{line_path(line)}'>
                 <div class='title'>#{line.place.name}</div>
-                <div class='waiting-time'>#{line.waiting_time}</div>
+                <div class='waiting-time'>#{line.waiting_time} min</div>
               </a>
             </div>
           "
         elsif line.waiting_time > 30
           marker.picture url: ActionController::Base.helpers.asset_path("small-orange-steps.png"), width: 50, height: 48
           marker.infowindow "
-            <div class='infowindow'>
+            <div class='infowindow' style='background-color:#F58823'>
               <a class='close-white'><span>&times;</span></a>
               <a href='#{line_path(line)}'>
                 <div class='title'>#{line.place.name}</div>
-                <div class='waiting-time'>Pas assez d'info</div>
+                <div class='waiting-time'>#{line.waiting_time} min</div>
               </a>
             </div>
           "
         else
           marker.picture url: ActionController::Base.helpers.asset_path("small-green-steps.png"), width: 50, height: 48
           marker.infowindow "
-            <div class='infowindow'>
+            <div class='infowindow' style='background-color:#248F2E'>
               <a class='close-white'><span>&times;</span></a>
               <a href='#{line_path(line)}'>
                 <div class='title'>#{line.place.name}</div>
-                <div class='waiting-time'>#{line.waiting_time}</div>
+                <div class='waiting-time'>#{line.waiting_time} min</div>
               </a>
             </div>
           "

@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <div class="line-show">
         <p class="line-name"><%= @line.place.name %></p>
-        <% if @line.waiting_time %>
+        <% if @line.has_at_least_one_checkout? %>
           <p class="line-info">
             <%= t '.estimate', default: "Attente estimée actuellement" %>
           </p>
@@ -101,6 +101,8 @@
 
 <%= content_for :after_js do %>
   <%= javascript_tag do %>
-    line(<%= @line.waiting_time %>)
+    <% if @line.has_at_least_one_checkout? %>
+      line(<%= @line.waiting_time %>)
+    <% end %>
   <% end %>
 <% end %>

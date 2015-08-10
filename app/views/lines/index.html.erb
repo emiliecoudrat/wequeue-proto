@@ -34,25 +34,8 @@
         var mapOptions = { zoom: 15, detect_location: true, center_on_user: true }
         handler = Gmaps.build('Google');
         handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
-          markers = handler.addMarkers(<%= raw @markers.to_json %>, [{icon: { url: '<%= image_path "small-green-steps.png" %>' }}]);
+          markers = handler.addMarkers(<%= raw @markers.to_json %>);
           handler.map.centerOn(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-          $('#map').on('click', function() {
-            $.each($('.infowindow'), function(index, item) {
-              $(this).show()
-            })
-            setTimeout(function() {
-              $.each($('.infowindow'), function(index, item) {
-                $(this).parent().parent().parent().prev().remove()
-                $(this).parent().parent().parent().next().remove()
-              })
-              $('.infowindow span').on('click', function(event) {
-                console.log('test')
-                setTimeout(function() {
-                  $('.infowindow span').parent().parent().hide();
-                }, 50)
-              })
-            }, 50)
-          })
         });
       }
       google.maps.event.addDomListener(window, 'load', function() {

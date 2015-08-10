@@ -1,16 +1,15 @@
 class ChronosController < ApplicationController
-  before_action :set_chrono, except: [:create, :update]
+  before_action :set_chrono, except: :create
 
   def create
     @line = Line.find(params[:id])
     @chrono = Chrono.new(line: @line, user: current_user, checked_in_at: DateTime.now)
-    @running_chrono = Chrono.where(line: @line, user: current_user, checked_out_at: !nil, manually_added_duration_in_minutes: !nil)
-    if @running_chrono
-      redirect_to chrono_path(@running_chrono)
+    if @line.has_a_running_chrono_with?(current_user)
+      redirect_to chrono_path(@line.running_chrono_with(current_user))
       flash.keep[:alert] = "Vous avez déjà un chrono lancé sur cette file d'attente !"
     elsif @chrono.save
       redirect_to new_chrono_post_path(@chrono, Post.new)
-      flash.keep[:alert] = "<i class='fa fa-check'><i> Vous venez de vous signaler dans la file d'attente #{@line.place.name}, le chronomètre de l'attente est lancé.".html_safe
+      flash.keep[:alert] = "Vous venez de vous signaler dans la file d'attente #{@line.place.name}, le chronomètre de l'attente est lancé.".html_safe
     else
       redirect_to line_path(@chrono.line)
       flash.keep[:alert] = "Le chrono n'a pas été lancé, réessayez !"

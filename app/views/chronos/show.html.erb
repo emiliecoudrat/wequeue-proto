@@ -5,10 +5,10 @@
         <p class="line-name"><%= @chrono.line.place.name %></p>
         <div class="waiting-since">
           <p>
-            <%= t '.waiting-since', default: "Vous attendez depuis" %>
+            <%= t '.waiting-since', default: @chrono.done? ? "Vous avez attendu" : "Vous attendez depuis" %>
             <div id="timer-frame">
               <div id="timer">
-                <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+                <span id="hours"><%= @chrono.hours %></span>:<span id="minutes"><%= @chrono.minutes.to_s.size == 1 ? "0" + @chrono.minutes.to_s : @chrono.minutes %></span>:<span id="seconds"><%= @chrono.seconds %></span>
               </div>
             </div>
           </p>
@@ -18,26 +18,32 @@
   </div>
 </div>
 <footer>
-  <div class="popup-helper slideDown">
-    <a class="close-white"><span>&times;</span></a>
-    <% unless @chrono.done? %>
-      <%= t '.checkout', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
+  <% if @chrono.done? %>
+    <%= link_to authenticated_root_path do %>
+      <%= image_tag 'small-loupe-icon.png' %>
     <% end %>
-  </div>
-  <%= link_to authenticated_root_path do %>
-    <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
-  <% end %>
-  <%= form_for @chrono, url: stop_chrono_path(@chrono), method: :get do |f| %>
-    <%= image_tag 'step-button.png', class: "steps-center", id: "action-timer" %>
-    <%= f.submit 'stop', class: 'hidden' %>
+  <% else %>
+    <div class="popup-helper slideDown">
+      <a class="close-white"><span>&times;</span></a>
+        <%= t '.checkout', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
+    </div>
+    <%= link_to authenticated_root_path do %>
+      <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
+    <% end %>
+    <%= form_for @chrono, url: stop_chrono_path(@chrono), method: :get do |f| %>
+      <%= image_tag 'step-button.png', class: "steps-center", id: "action-timer" %>
+      <%= f.submit 'stop', class: 'hidden' %>
+    <% end %>
   <% end %>
 </footer>
 
 <%= content_for :after_js do %>
   <%= javascript_tag do %>
-    var h = <%= @chrono.hours %>
-    var m = <%= @chrono.minutes %>
-    var s = <%= @chrono.seconds %>
-    chrono(h, m, s)
+    <% unless @chrono.done? %>
+      var h = <%= @chrono.hours %>
+      var m = <%= @chrono.minutes %>
+      var s = <%= @chrono.seconds %>
+      chrono(h, m, s)
+    <% end %>
   <% end %>
 <% end %>

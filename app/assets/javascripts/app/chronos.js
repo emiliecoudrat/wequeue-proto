@@ -1,7 +1,15 @@
 function chrono(h, m, s) {
   $('#hours').text(h)
-  $('#minutes').text(m)
-  $('#seconds').text(s)
+  if(String(m).length == 1) {
+    $('#minutes').text('0' + String(m))
+  } else {
+    $('#minutes').text(m)
+  }
+  if(String(s).length == 1) {
+    $('#seconds').text('0' + String(s))
+  } else {
+    $('#seconds').text(s)
+  }
 
   setInterval(function() {
     if(s < 59) {
@@ -18,13 +26,15 @@ function chrono(h, m, s) {
     }
     $('#hours').text(h)
     if(String(m).length == 1) {
-      m = '0' + String(m);
+      $('#minutes').text('0' + String(m))
+    } else {
+      $('#minutes').text(m)
     }
-    $('#minutes').text(m)
-    if(s.length == 1) {
-      s = '0' + String(s);
+    if(String(s).length == 1) {
+      $('#seconds').text('0' + String(s))
+    } else {
+      $('#seconds').text(s)
     }
-    $('#seconds').text(s)
     if(s <= 30) {
       var orientation = Math.floor(90 + 6 * s )
       var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FFFFFF 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
