@@ -35,12 +35,22 @@ function chrono(h, m, s) {
     } else {
       $('#seconds').text(s)
     }
-    if(s <= 30) {
-      var orientation = Math.floor(90 + 6 * s )
-      var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FFFFFF 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
+    if(m % 2 == 0) {
+      if(s <= 30) {
+        var orientation = Math.floor(90 + 6 * s )
+        var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FFFFFF 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
+      } else {
+        var orientation = Math.floor(90 + 6 * (s - 30))
+        var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FF5556 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
+      }
     } else {
-      var orientation = Math.floor(90 + 6 * (s - 30))
-      var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FF5556 50%), linear-gradient(90deg, #FFFFFF 50%, transparent 50%)';
+      if(s <= 30) {
+        var orientation = Math.floor(90 + 6 * s )
+        var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FF5556 50%), linear-gradient(270deg, #FFFFFF 50%, transparent 50%)';
+      } else {
+        var orientation = Math.floor(90 + 6 * (s - 30))
+        var value = 'linear-gradient(' + orientation + 'deg, transparent 50%, #FFFFFF 50%), linear-gradient(90deg, transparent 50%, #FFFFFF 50%)';
+      }
     }
     var timer = document.getElementById('timer-frame');
     timer.style.backgroundImage = value;
