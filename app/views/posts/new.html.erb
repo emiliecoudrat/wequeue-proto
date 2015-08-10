@@ -1,7 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="new-post">
+      <div class="post-new">
+        <p class="line-name"><%= @chrono.line.place.name %></p>
+        <div class="waiting-since">
+          <p>
+            <%= t '.waiting-since', default: @chrono.done? ? "Vous avez attendu" : "Vous attendez depuis" %>
+            <div id="timer-frame">
+              <div id="timer">
+                <span id="hours"><%= @chrono.hours %></span>:<span id="minutes"><%= @chrono.minutes.to_s.size == 1 ? "0" + @chrono.minutes.to_s : @chrono.minutes %></span>:<span id="seconds"><%= @chrono.seconds %></span>
+              </div>
+            </div>
+          </p>
+        </div>
         <div class="row">
           <div class="col-xs-7">
             <p class="text-left">
@@ -31,3 +42,13 @@
     </div>
   </div>
 </div>
+<%= content_for :after_js do %>
+  <%= javascript_tag do %>
+    <% unless @chrono.done? %>
+      var h = <%= @chrono.hours %>
+      var m = <%= @chrono.minutes %>
+      var s = <%= @chrono.seconds %>
+      chrono(h, m, s)
+    <% end %>
+  <% end %>
+<% end %>

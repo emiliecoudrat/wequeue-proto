@@ -19,6 +19,11 @@
   <%= link_to authenticated_root_path do %>
     <%= image_tag 'small-loupe-icon.png', class: "search-central" %>
   <% end %>
+  <% if current_user.running_chrono %>
+    <%= link_to chrono_path(current_user.running_chrono) do %>
+      <%= image_tag 'small-timer-icon.png', class: "timer-right" %>
+    <% end %>
+  <% end %>
 </footer>
 
 <% content_for(:after_js) do %>

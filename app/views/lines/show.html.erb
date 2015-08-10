@@ -74,9 +74,9 @@
                         <div class="post-content">
                           <%= simple_format "« " + post.content + " »" %>
                         </div>
-                        <div class="post-picture">
-                          <%= image_tag post.picture.url(:medium) %>
-                        </div>
+                          <div class="post-picture">
+                            <%= image_tag post.picture.url(:medium) if post.picture_file_name %>
+                          </div>
                       </div>
                     </div>
                   <% end %>
@@ -97,7 +97,7 @@
     <% elsif !@line.has_a_running_chrono_with?(current_user) %>
       <%= t '.checkin', default: "Signalez-vous dans la file d'attente." %>
     <% else %>
-      <%= t '.checkout', default: "N'oubliez pas de signaler votre sortie de la file d'attente." %>
+      <%= t '.checkout', default: "Voir / arrêter le chrono." %>
     <% end %>
   </div>
   <%= link_to authenticated_root_path do %>

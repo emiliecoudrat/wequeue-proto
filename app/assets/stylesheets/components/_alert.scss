@@ -9,9 +9,11 @@
   color: white;
   transition: all 0.1s linear;
   &-info {
-    background: $green;
+    color: $green;
+    background: white;
   }
   &-warning {
-    background: $red;
+    color: $red;
+    background: white;
   }
 }
