@@ -9,6 +9,51 @@ class LinesController < ApplicationController
       @markers = Gmaps4rails.build_markers(@lines) do |line, marker|
         marker.lat line.place.latitude
         marker.lng line.place.longitude
+        if line.waiting_time.nil?
+          marker.picture url: ActionController::Base.helpers.asset_path("small-green-steps.png"), width: 50, height: 48
+          marker.infowindow "
+            <div class='infowindow'>
+              <a class='close-white'><span>&times;</span></a>
+              <a href='#{line_path(line)}'>
+                <div class='title'>#{line.place.name}</div>
+                <div class='waiting-time'>Pas assez d'info</div>
+              </a>
+            </div>
+          "
+        elsif line.waiting_time > 60
+          marker.picture url: ActionController::Base.helpers.asset_path("small-red-steps.png"), width: 50, height: 48
+          marker.infowindow "
+            <div class='infowindow'>
+              <a class='close-white'><span>&times;</span></a>
+              <a href='#{line_path(line)}'>
+                <div class='title'>#{line.place.name}</div>
+                <div class='waiting-time'>#{line.waiting_time}</div>
+              </a>
+            </div>
+          "
+        elsif line.waiting_time > 30
+          marker.picture url: ActionController::Base.helpers.asset_path("small-orange-steps.png"), width: 50, height: 48
+          marker.infowindow "
+            <div class='infowindow'>
+              <a class='close-white'><span>&times;</span></a>
+              <a href='#{line_path(line)}'>
+                <div class='title'>#{line.place.name}</div>
+                <div class='waiting-time'>Pas assez d'info</div>
+              </a>
+            </div>
+          "
+        else
+          marker.picture url: ActionController::Base.helpers.asset_path("small-green-steps.png"), width: 50, height: 48
+          marker.infowindow "
+            <div class='infowindow'>
+              <a class='close-white'><span>&times;</span></a>
+              <a href='#{line_path(line)}'>
+                <div class='title'>#{line.place.name}</div>
+                <div class='waiting-time'>#{line.waiting_time}</div>
+              </a>
+            </div>
+          "
+        end
       end
     end
   end

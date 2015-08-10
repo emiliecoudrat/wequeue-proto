@@ -10,5 +10,6 @@ $(document).ready(function() {
   if($('#map').length > 0) {
     var mapHeight = $(window).height() - $('nav').height() - 20 - $('.search').height() - $('footer').height();
     $('#map').height(mapHeight);
+
   }
 })

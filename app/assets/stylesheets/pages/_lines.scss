@@ -146,3 +146,56 @@ footer {
     width: 70px;
   }
 }
+#map {
+  .infowindow {
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-left: 20px;
+    background-color: $green;
+    a {
+      color: white;
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        color: white;
+      }
+      .title {
+        font-weight: 700;
+      }
+    }
+    .close-white {
+      position: absolute;
+      top: 1px;
+      right: 30px;
+      background-color: transparent;
+      color: white;
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+      span {
+        cursor: pointer;
+      }
+    }
+    &:after {
+      content: ' ';
+      width: 30%;
+      height: 20px;
+      border-radius: 50% / 100%;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      position: absolute;
+      right: 36%;
+      bottom: -5px;
+      background-color: $green;
+      z-index: 100;
+    }
+  }
+  .gm-style .gm-style-iw {
+    overflow: visible;
+  }
+}
