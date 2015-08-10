@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="chrono-edit">
+        <p class="line-name"><%= @chrono.line.place.name %></p>
+        <div class="estimate">
+          <p>
+            <%= t '.estimated-time', default: "Combien de temps penses-tu avoir attendu ?" %>
+            <%= t '.dropout-time', default: "(ou à combien estimes-tu la queue si tu l'as quittée)" %>
+          </p>
+          <%= form_for @chrono do |f| %>
+            <div class="form-group">
+              <%= f.text_field :manually_added_duration_in_minutes, data: {
+                'slider-id' => 'ex1Slider',
+                'slider-min' => '0',
+                'slider-max' => '120',
+                'slider-step' => '1',
+                'slider-value' => "#{@chrono.duration_since_checkin.floor / 60}"
+              } %>
+            </div>
+            <div>
+              <span id="min"><%= @chrono.duration_since_checkin.floor / 60 %></span> min
+            </div>
+            <%= f.submit 'OK', class: "btn btn-red" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= content_for :after_js do %>
+  <%= javascript_tag do %>
+    $('#chrono_manually_added_duration_in_minutes').slider()
+    $('#chrono_manually_added_duration_in_minutes').on('change', function() {
+      $('#min').text($('#chrono_manually_added_duration_in_minutes').val())
+    })
+  <% end %>
+<% end %>

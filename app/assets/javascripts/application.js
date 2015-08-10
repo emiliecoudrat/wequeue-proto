@@ -5,6 +5,7 @@
 //= require gmaps/google
 
 //= require_tree ./app
+//= require bootstrap-slider
 
 
 // Please do not put any code in here. Create a new .js file in

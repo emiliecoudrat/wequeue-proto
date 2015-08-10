@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="user-profile">
+        <%= image_tag @user.picture, class: "user-avatar" %>
+        <p><%= @user.first_name %></p>
+        <p><%= @user.last_name %></p>
+        <p><%= @user.email %></p>
+        <p><%= @user.city.split(',').first %></p>
+        <p><%= @user.birthday.strftime '%d/%m/%Y' %></p>
+        <div class="counter">
+          <%= t '.cumulated_time', default: "Votre temps d'attente cumulé" %>
+          <div id="timer">
+            <%= @user.cumulated_duration_in_string %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <%= link_to authenticated_root_path do %>
+    <%= image_tag 'small-loupe-icon.png', class: "search-central" %>
+  <% end %>
+</footer>

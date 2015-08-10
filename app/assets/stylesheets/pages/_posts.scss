@@ -1,0 +1,32 @@
+.new-post {
+  text-align: center;
+  padding: 30px;
+  label.classic-label {
+    font-weight: 300;
+    float: left;
+  }
+  .form-control {
+    box-shadow: none;
+    color: $red;
+    resize: none;
+    height: 150px;
+    border: 2px solid $red;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 10px;
+  }
+  .btn {
+    color: white;
+    border-radius: 10px;
+    &-red {
+      background-color: $red;
+      padding: 10px 30px;
+    }
+    &-gray {
+      background-color: #9B9B9B;
+      font-size: 14px;
+      font-weight: 300;
+      margin-top: 10px;
+    }
+  }
+}

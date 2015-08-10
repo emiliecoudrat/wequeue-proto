@@ -49,16 +49,25 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.city = auth.info.location
       user.birthday = Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y')
-      user.picture = auth.info.image
+      user.picture = auth.info.image.gsub('http', 'https') + "?type=large"
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
 
-  def cumulated_duration
+  def cumulated_duration_in_seconds
     duration = 0
     chronos.each do |chrono|
-      duration += chrono.total_duration if chrono.total_duration
+      duration += chrono.total_duration if chrono.done?
     end
+    duration
+  end
+
+  def cumulated_duration_in_string
+    "#{(cumulated_duration_in_seconds / 3600) < 10 ? "0" + (cumulated_duration_in_seconds / 3600).floor.to_s : (cumulated_duration_in_seconds / 3600).floor}:#{(cumulated_duration_in_seconds % 3600 / 60) < 10 ? "0" + (cumulated_duration_in_seconds % 3600 / 60).floor.to_s : (cumulated_duration_in_seconds % 3600 / 60).floor}:#{((cumulated_duration_in_seconds % 3600 % 60)) < 10 ? "0" + ((cumulated_duration_in_seconds % 3600 % 60)).floor.to_s : ((cumulated_duration_in_seconds % 3600 % 60)).floor}"
+  end
+
+  def running_chrono
+    Chrono.find_by(user: self, checked_out_at: nil, manually_added_duration_in_minutes: nil)
   end
 end

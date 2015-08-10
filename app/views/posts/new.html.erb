@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="new-post">
+        <div class="row">
+          <div class="col-xs-7">
+            <p class="text-left">
+              <%= t '.post-picture', default: 'Poster une photo de la file d\'attente.' %>
+            </p>
+          </div>
+          <div class="col-xs-5">
+            <div class="text-right">
+              <%= image_tag 'small-camera-red.png', height: '42', id: "image-upload" %>
+            </div>
+          </div>
+        </div>
+        <%= form_for [@chrono, @post], html: { multipart: true } do |f| %>
+          <ul class="list-unstyled list-inline">
+            <li id="placeholder"></li>
+            <li class="hidden" id="check"><i class="fa fa-check"></i></li>
+          </ul>
+          <%= f.file_field :picture, class: "hidden" %>
+          <div class="form-group">
+            <%= f.label :content, t('.comment', default: 'Laisser un commentaire'), class: "classic-label" %>
+            <%= f.text_area :content, class: "form-control" %>
+          </div>
+          <%= f.submit t('.share', default: 'Partager'), class: "btn btn-red" %>
+        <% end %>
+        <%= link_to t('no_thanks', default: "Non merci."), line_path(@chrono.line), class: "btn btn-gray" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,36 @@
 #wrapper {
   margin-top: 71px;
 }
-
 .text-red {
   color: $red;
   font-weight: 300;
   font-size: 16px
+}
+footer {
+  text-align: center;
+  background-color: $red;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 15px;
+  &:before {
+    content: ' ';
+    width: 50%;
+    height: 100px;
+    border-radius: 50% / 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    position: absolute;
+    right: 25%;
+    top: -30px;
+    background-color: $red;
+    border-left: 1px solid $red;
+    border-top: 1px solid $red;
+    z-index: -1;
+  }
+}
+.btn-red {
+  background-color: $red;
+  color: white;
 }

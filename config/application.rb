@@ -30,6 +30,9 @@ module WequeueProto
       generate.view_specs false
     end
 
+    config.time_zone = 'Paris'
+    config.active_record.default_timezone = :local
+
     config.i18n.default_locale = :fr
     config.action_controller.action_on_unpermitted_parameters = :raise
     # Settings in config/environments/* take precedence over those specified here.

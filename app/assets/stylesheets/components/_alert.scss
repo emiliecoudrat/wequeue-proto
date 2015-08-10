@@ -3,9 +3,11 @@
 * ------------------------------------- */
 
 .alert {
+  border: none;
   margin: 0;
   text-align: center;
   color: white;
+  transition: all 0.1s linear;
   &-info {
     background: $green;
   }
