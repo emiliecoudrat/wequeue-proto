@@ -6,7 +6,9 @@
         <p><%= @user.first_name %></p>
         <p><%= @user.last_name %></p>
         <p><%= @user.email %></p>
-        <p><%= @user.city.split(',').first %></p>
+        <% if @user.city %>
+          <p><%= @user.city.split(',').first %></p>
+        <% end %>
         <p><%= @user.birthday.strftime '%d/%m/%Y' %></p>
         <div class="counter">
           <%= t '.cumulated_time', default: "Votre temps d'attente cumulé" %>
