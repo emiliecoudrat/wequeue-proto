@@ -55,7 +55,7 @@
                     </div>
                   <% else %>
                     <div class="since">
-                      <%= t '.since', default: "Dans la queue depuis " %><span class='text-red'><%= chrono.duration_in_string %></span>
+                      <%= t '.since', default: "Dans la queue depuis " %><span id="hours"><%= chrono.hours %></span>:<span id="minutes"><%= chrono.minutes.to_s.size == 1 ? "0" + chrono.minutes.to_s : chrono.minutes %></span>:<span id="seconds"><%= chrono.seconds %></span>
                     </div>
                   <% end %>
                 </div>

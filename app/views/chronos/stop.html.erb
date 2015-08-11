@@ -15,14 +15,16 @@
         </div>
         <div class="actions">
           <div class="row">
-            <div class="col-xs-4 text-right">
+            <div class="col-xs-6 text-right">
               <%= link_to t('.confirm', default: "Oui, je valide"), thanks_path, class: "btn btn-red" %>
             </div>
-            <div class="col-xs-4">
-              <%= link_to t('.oups', default: "Oups, pas fini"), restart_chrono_path(@chrono), class: "btn btn-red" %>
-            </div>
-            <div class="col-xs-4 text-left">
+            <div class="col-xs-6 text-left">
               <%= link_to t('.manual', default: "Non, j'ajuste"), edit_chrono_path(@chrono), class: "btn btn-red" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <%= link_to t('.oups', default: "Oups, pas fini"), restart_chrono_path(@chrono), class: "btn btn-gray" %>
             </div>
           </div>
         </div>

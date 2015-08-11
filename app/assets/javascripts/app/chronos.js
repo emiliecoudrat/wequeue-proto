@@ -93,3 +93,54 @@ function getCssValuePrefix() {
   delete dom;
   return rtrnVal;
 }
+
+
+// chrono = [id, hours, minutes, seconds]
+function chronos(chronos) {
+  var chronosArray = JSON.parse(chronos);
+  var hours = []
+  var minutes = []
+  var seconds = []
+  for(i = 0; i < chronosArray.length; i++) {
+    hours[i] = parseInt(chronosArray[i][1])
+    minutes[i] = parseInt(chronosArray[i][2])
+    seconds[i] = parseInt(chronosArray[i][3])
+    $('#chrono_' + chronosArray[i][0] + ' #hours').text(chronosArray[i][1])
+    if(chronosArray[i][2].length == 1) {
+      $('#chrono_' + chronosArray[i][0] + ' #minutes').text('0' + chronosArray[i][2])
+    } else {
+      $('#chrono_' + chronosArray[i][0] + ' #minutes').text(chronosArray[i][2])
+    }
+    if(chronosArray[i][3].length == 1) {
+      $('#chrono_' + chronosArray[i][0] + ' #seconds').text('0' + chronosArray[i][3])
+    } else {
+      $('#chrono_' + chronosArray[i][0] + ' #seconds').text(chronosArray[i][3])
+    }
+
+    setInterval(function() {
+      if(parseInt(chronosArray[i][3]) < 59) {
+        seconds[i]++
+      } else if(parseInt(chronosArray[i][3]) == 59) {
+        if(parseInt(chronosArray[i][2]) < 59) {
+          minutes[i]++
+          seconds[i] = 0
+        } else if(m == 59) {
+          hours[i]++
+          minutes[i] = 0
+          seconds[i] = 0
+        }
+      }
+      $('#chrono_' + chronosArray[i][0] + ' #hours').text(chronosArray[i][1])
+      if(chronosArray[i][2].length == 1) {
+        $('#chrono_' + chronosArray[i][0] + ' #minutes').text('0' + chronosArray[i][2])
+      } else {
+        $('#chrono_' + chronosArray[i][0] + ' #minutes').text(chronosArray[i][2])
+      }
+      if(chronosArray[i][3].length == 1) {
+        $('#chrono_' + chronosArray[i][0] + ' #seconds').text('0' + chronosArray[i][3])
+      } else {
+        $('#chrono_' + chronosArray[i][0] + ' #seconds').text(chronosArray[i][3])
+      }
+    }, 1000);
+  }
+}
