@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.city = auth.info.location
+      user.city = auth.info.location if auth.info.location
       user.birthday = Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y') if auth.extra.raw_info.birthday
       user.picture = auth.info.image.gsub('http', 'https') + "?type=large"
       user.token = auth.credentials.token

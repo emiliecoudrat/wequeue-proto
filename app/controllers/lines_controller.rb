@@ -3,9 +3,9 @@ class LinesController < ApplicationController
 
   def index
     if current_user.running_chrono
-      flash.keep[:alert] = "Vous êtez déjà dans une file d'attente !"
+      flash.now[:alert] = "Vous êtes déjà dans une file d'attente !"
     end
-    @lines = Line.select { |line| line.creation_time_from_now_in_hours < 12 }
+    @lines = Line.select { |line| line.creation_time_from_now_in_hours < 12 && line.chronos.size > 0 }
     @markers = Gmaps4rails.build_markers(@lines) do |line, marker|
       marker.lat line.place.latitude
       marker.lng line.place.longitude

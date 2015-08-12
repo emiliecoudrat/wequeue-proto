@@ -10,4 +10,7 @@ $(document).ready(function() {
       $('#check').removeClass('hidden')
     })
   })
+  $('form input').on('click', function() {
+    $(this).disabled = true
+  })
 })

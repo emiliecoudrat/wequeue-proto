@@ -30,24 +30,26 @@
             <div class="chrono" id="chrono_<%= chrono.id %>">
               <div class="row">
                 <div class="col-xs-4 text-left">
-                  <div class="user-name">
-                    <%= chrono.user.first_name.upcase %>
-                  </div>
-                  <div class="user-avatar">
-                    <%= image_tag chrono.user.picture %>
-                  </div>
+                  <%= link_to user_path(chrono.user) do %>
+                    <div class="user-name">
+                      <%= chrono.user.first_name.upcase %>
+                    </div>
+                    <div class="user-avatar">
+                      <%= image_tag chrono.user.picture %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="col-xs-8 text-right">
                   <div class="date">
                     <%= t '.date', default: "Date : " %><%= l chrono.created_at, format: '%d %B %Y' %>
                   </div>
                   <div class="checkin">
-                    <%= t '.checkin', default: "Checkin : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                    <%= t '.checkin', default: "Entrée : " %><%= l chrono.created_at, format: '%Hh%M' %>
                   </div>
                   <% if chrono.total_duration %>
                     <% if chrono.checked_out_at %>
                       <div class="checkout">
-                        <%= t '.checkout', default: "Checkout : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
+                        <%= t '.checkout', default: "Sortie : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
                       </div>
                     <% end %>
                     <div class="total">
@@ -55,7 +57,7 @@
                     </div>
                   <% else %>
                     <div class="since">
-                      <%= t '.since', default: "Dans la queue depuis " %><span id="hours"><%= chrono.hours %></span>:<span id="minutes"><%= chrono.minutes.to_s.size == 1 ? "0" + chrono.minutes.to_s : chrono.minutes %></span>:<span id="seconds"><%= chrono.seconds %></span>
+                      <%= t '.since', default: "Dans la queue depuis " %><span id="hours"><%= chrono.hours %></span><span>:</span><span id="minutes"><%= chrono.minutes.to_s.size == 1 ? "0" + chrono.minutes.to_s : chrono.minutes %></span><span>:</span><span id="seconds"><%= chrono.seconds %></span>
                     </div>
                   <% end %>
                 </div>
@@ -90,16 +92,18 @@
   </div>
 </div>
 <footer>
-  <div class="popup-helper slideDown">
-    <a class="close-white"><span>&times;</span></a>
-    <% if @line.chronos.size == 0 %>
-      <%= t '.first', default: "Soyez le premier à vous signaler dans la file d'attente." %>
-    <% elsif !@line.has_a_running_chrono_with?(current_user) %>
-      <%= t '.checkin', default: "Signalez-vous dans la file d'attente." %>
-    <% else %>
-      <%= t '.checkout', default: "Voir / arrêter le chrono." %>
-    <% end %>
-  </div>
+  <% unless current_user.running_chrono && !@line.has_a_running_chrono_with?(current_user) %>
+    <div class="popup-helper slideDown">
+      <a class="close-white"><span>&times;</span></a>
+      <% if @line.chronos.size == 0 %>
+        <%= t '.first', default: "Soyez le premier à vous signaler dans la file d'attente." %>
+      <% elsif !@line.has_a_running_chrono_with?(current_user) %>
+        <%= t '.checkin', default: "Signalez-vous dans la file d'attente." %>
+      <% else %>
+        <%= t '.checkout', default: "Voir / arrêter le chrono." %>
+      <% end %>
+    </div>
+  <% end %>
   <%= link_to authenticated_root_path do %>
     <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
   <% end %>

@@ -6,6 +6,9 @@ class ChronosController < ApplicationController
     @chrono = Chrono.new(line: @line, user: current_user, checked_in_at: DateTime.now)
     if @line.has_a_running_chrono_with?(current_user)
       redirect_to chrono_path(@line.running_chrono_with(current_user))
+    elsif current_user.running_chrono
+      redirect_to chrono_path(current_user.running_chrono)
+      flash.keep[:alert] = "Vous êtes déjà dans une file d'attente !"
     elsif @chrono.save
       redirect_to new_chrono_post_path(@chrono, Post.new)
       flash.keep[:alert] = "Vous venez de vous signaler dans la file d'attente #{@line.place.name}, le chronomètre de l'attente est lancé.".html_safe

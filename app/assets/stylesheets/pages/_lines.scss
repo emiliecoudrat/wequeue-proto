@@ -1,14 +1,17 @@
 .search {
-  padding: 15px;
+  padding: 10px;
   #search-form {
-    padding: 0 15px;
-    .form-control {
-      box-shadow: none;
-      border: 2px solid $red;
-      border-radius: 10px;
-      padding: 15px 20px;
-      margin-top: 10px;
-      height: 46px;
+    padding: 0;
+    .form-group {
+      margin-bottom: 0;
+      .form-control {
+        box-shadow: none;
+        border: 2px solid $red;
+        border-radius: 10px;
+        padding: 15px 20px;
+        // margin-top: 10px;
+        height: 46px;
+      }
     }
   }
 }
@@ -67,10 +70,15 @@
     .chrono {
       margin-bottom: 10px;
       padding: 15px;
-      border: 1px solid $gray;
+      border: 1px solid lighten($gray, 20%);
       border-radius: 15px;
       .row {
-        border-bottom: 1px solid $gray;
+        border-bottom: 1px solid lighten($gray, 20%);
+      }
+      .since {
+        span {
+          color: $red;
+        }
       }
       .user-name {
         color: $red;
@@ -113,7 +121,7 @@ footer {
     color: white;
     background-image: asset-url('small-rectangle-tuto.png');
     background-size: 100% 100%;
-    padding: 15px 15px 25px 15px;
+    padding: 20px 20px 30px 20px;
     .close-white {
       position: absolute;
       top: 5px;

@@ -30,11 +30,37 @@ footer {
     z-index: -1;
   }
 }
-.btn-red {
-  background-color: $red;
-  color: white;
+
+.btn {
+  &:hover,
+  &:active,
+  &:focus,
+  &.focus {
+    color: white
+  }
+  &-red {
+    background-color: $red;
+    color: white;
+    padding: 10px 20px;
+  }
+  &-gray {
+    background-color: $gray;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
 }
-.btn-gray {
-  background-color: $gray;
-  color: white;
+.link-scred {
+  color: #4A4A4A;
+  &:hover {
+    text-decoration: none;
+  }
+}
+a {
+  &:hover,
+  &:active,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
 }

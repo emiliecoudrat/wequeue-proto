@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="chrono-stop">
-        <p class="line-name"><%= @chrono.line.place.name %></p>
+        <p class="line-name"><%= link_to @chrono.line.place.name, line_path(@chrono.line), class: "link-scred" %></p>
         <div class="waiting-since">
           <p>
             <%= t '.waiting-since', default: "Vous attendez depuis" %>

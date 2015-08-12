@@ -15,16 +15,13 @@
 </div>
 
 <div id="map" style="width: 100%; height: 600px;"></div>
-<footer>
-  <%= link_to authenticated_root_path do %>
-    <%= image_tag 'small-loupe-icon.png', class: "search-central" %>
-  <% end %>
-  <% if current_user.running_chrono %>
+<% if current_user.running_chrono %>
+  <footer>
     <%= link_to chrono_path(current_user.running_chrono) do %>
-      <%= image_tag 'small-timer-icon.png', class: "timer-right" %>
+      <%= image_tag 'step-button.png', class: "steps-center" %>
     <% end %>
-  <% end %>
-</footer>
+  </footer>
+<% end %>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
