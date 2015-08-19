@@ -94,6 +94,15 @@
     border-radius: 10px;
     padding: 25px;
     margin-top: 60px;
+    .waiting-time span {
+      font-size: 20px;
+    }
+    .share {
+      img {
+        height: 55px;
+        padding: 15px 15px 0 15px;
+      }
+    }
   }
 }
 .chrono-stop {
