@@ -31,7 +31,7 @@
         alert("Geolocation is not supported by this browser.");
       }
       function showPosition(position) {
-        var mapOptions = { zoom: 12, detect_location: true, center_on_user: true }
+        var mapOptions = { zoom: 13, detect_location: true, center_on_user: true }
         handler = Gmaps.build('Google');
         var markersArray = <%= raw @markers.to_json %>
         markersArray.push({ lat: position.coords.latitude, lng: position.coords.longitude })
