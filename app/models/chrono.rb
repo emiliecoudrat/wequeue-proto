@@ -101,7 +101,7 @@ class Chrono < ActiveRecord::Base
     elsif total_duration_in_minutes <= 35
       joke = "le temps de faire trois stations sur la ligne 13 un lundi matin"
     elsif total_duration_in_minutes <= 40
-      joke = "le temps que Gainsbourg mettait pour fumer son prmier paquet de clopes chaque matin"
+      joke = "le temps que Gainsbourg mettait pour fumer son premier paquet de clopes chaque matin"
     elsif total_duration_in_minutes <= 45
       joke = "le temps que met Le Père Fourras chaque soir pour retirer son dentier"
     elsif total_duration_in_minutes <= 50
@@ -127,7 +127,7 @@ class Chrono < ActiveRecord::Base
     elsif total_duration_in_minutes <= 140
       joke = "le temps moyen que passe un italien à draguer chaque jour"
     else
-      joke = "le temps que mettent les Russes avant de ressentir les premiers effets de l'alcool après avoir bu 2 bouteilles de Vodka"
+      joke = "le temps que mettent les russes avant de ressentir les premiers effets de l'alcool après avoir bu 2 bouteilles de Vodka"
     end
     joke
   end
