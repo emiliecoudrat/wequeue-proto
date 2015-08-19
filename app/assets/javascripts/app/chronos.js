@@ -98,49 +98,50 @@ function getCssValuePrefix() {
 // chrono = [id, hours, minutes, seconds]
 function chronos(chronos) {
   var chronosArray = JSON.parse(chronos);
+  var ids = []
   var hours = []
   var minutes = []
   var seconds = []
   for(i = 0; i < chronosArray.length; i++) {
+    ids[i] = parseInt(chronosArray[i][0])
     hours[i] = parseInt(chronosArray[i][1])
     minutes[i] = parseInt(chronosArray[i][2])
     seconds[i] = parseInt(chronosArray[i][3])
     $('#chrono_' + chronosArray[i][0] + ' #hours').text(chronosArray[i][1])
-    if(chronosArray[i][2].length == 1) {
+    if(String(chronosArray[i][2]).length == 1) {
       $('#chrono_' + chronosArray[i][0] + ' #minutes').text('0' + chronosArray[i][2])
     } else {
       $('#chrono_' + chronosArray[i][0] + ' #minutes').text(chronosArray[i][2])
     }
-    if(chronosArray[i][3].length == 1) {
+    if(String(chronosArray[i][3]).length == 1) {
       $('#chrono_' + chronosArray[i][0] + ' #seconds').text('0' + chronosArray[i][3])
     } else {
       $('#chrono_' + chronosArray[i][0] + ' #seconds').text(chronosArray[i][3])
     }
-
-    setInterval(function() {
-      if(parseInt(chronosArray[i][3]) < 59) {
-        seconds[i]++
-      } else if(parseInt(chronosArray[i][3]) == 59) {
-        if(parseInt(chronosArray[i][2]) < 59) {
-          minutes[i]++
-          seconds[i] = 0
-        } else if(m == 59) {
-          hours[i]++
-          minutes[i] = 0
-          seconds[i] = 0
-        }
-      }
-      $('#chrono_' + chronosArray[i][0] + ' #hours').text(chronosArray[i][1])
-      if(chronosArray[i][2].length == 1) {
-        $('#chrono_' + chronosArray[i][0] + ' #minutes').text('0' + chronosArray[i][2])
-      } else {
-        $('#chrono_' + chronosArray[i][0] + ' #minutes').text(chronosArray[i][2])
-      }
-      if(chronosArray[i][3].length == 1) {
-        $('#chrono_' + chronosArray[i][0] + ' #seconds').text('0' + chronosArray[i][3])
-      } else {
-        $('#chrono_' + chronosArray[i][0] + ' #seconds').text(chronosArray[i][3])
-      }
-    }, 1000);
+    // setInterval(function() {
+    //   if(parseInt(seconds[i]) < 59) {
+    //     seconds[i] += 1
+    //   } else if(parseInt(seconds[i]) == 59) {
+    //     if(parseInt(minutes[i]) < 59) {
+    //       minutes[i] += 1
+    //       seconds[i] = 0
+    //     } else if(m == 59) {
+    //       hours[i] += 1
+    //       minutes[i] = 0
+    //       seconds[i] = 0
+    //     }
+    //   }
+    //   $('#chrono_' + ids[i] + ' #hours').text(hours[i])
+    //   if(String(minutes[i]).length == 1) {
+    //     $('#chrono_' + ids[i][0] + ' #minutes').text('0' + minutes[i])
+    //   } else {
+    //     $('#chrono_' + ids[i][0] + ' #minutes').text(minutes[i])
+    //   }
+    //   if(String(seconds[i]).length == 1) {
+    //     $('#chrono_' + ids[i][0] + ' #seconds').text('0' + seconds[i])
+    //   } else {
+    //     $('#chrono_' + ids[i][0] + ' #seconds').text(seconds[i])
+    //   }
+    // }, 1000);
   }
 }

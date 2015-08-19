@@ -123,5 +123,6 @@
     <% if @line.has_at_least_one_checkout? %>
       line(<%= @line.waiting_time %>)
     <% end %>
+    chronos('<%= @line.running_chronos_data %>')
   <% end %>
 <% end %>

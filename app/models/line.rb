@@ -41,4 +41,16 @@ class Line < ActiveRecord::Base
   def running_chrono_with(user)
     chronos.select { |chrono| chrono.user == user && !chrono.done? }.first
   end
+
+  def running_chronos
+    chronos.select { |chrono| !chrono.done? && !chrono.quit }
+  end
+
+  def running_chronos_data
+    output = []
+    running_chronos.each do |chrono|
+      output << [chrono.id, chrono.hours, chrono.minutes, chrono.seconds]
+    end
+    output
+  end
 end

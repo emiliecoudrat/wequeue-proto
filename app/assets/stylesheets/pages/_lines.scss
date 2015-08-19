@@ -82,6 +82,11 @@
           color: $red;
         }
       }
+      .total {
+        .text-red {
+          font-weight: 500;
+        }
+      }
       .user-name {
         color: $red;
         font-weight: 700;

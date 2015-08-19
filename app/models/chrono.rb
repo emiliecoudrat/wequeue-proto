@@ -47,7 +47,7 @@ class Chrono < ActiveRecord::Base
   end
 
   def total_duration_in_string
-    "#{(total_duration / 3600) < 10 ? "0" + (total_duration / 3600).floor.to_s : (total_duration / 3600).floor}:#{(total_duration % 3600 / 60) < 10 ? "0" + (total_duration % 3600 / 60).floor.to_s : (total_duration % 3600 / 60).floor}:#{((total_duration % 3600 % 60)) < 10 ? "0" + ((total_duration % 3600 % 60)).floor.to_s : ((total_duration % 3600 % 60)).floor}" if total_duration
+    "#{(total_duration / 3600).floor}:#{(total_duration % 3600 / 60) < 10 ? "0" + (total_duration % 3600 / 60).floor.to_s : (total_duration % 3600 / 60).floor}:#{((total_duration % 3600 % 60)) < 10 ? "0" + ((total_duration % 3600 % 60)).floor.to_s : ((total_duration % 3600 % 60)).floor}" if total_duration
   end
 
   def hours
