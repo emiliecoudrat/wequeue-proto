@@ -31,6 +31,9 @@
       }
     }
   }
+  form > ul > li {
+    color: $green;
+  }
   label.classic-label {
     font-weight: 300;
     float: left;
