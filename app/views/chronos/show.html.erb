@@ -12,7 +12,6 @@
               </div>
             </div>
           </p>
-          <%= link_to t('.checkout', default: "Je sors de la file d'attente"), stop_chrono_path(@chrono), class: "btn btn-gray" %>
         </div>
       </div>
     </div>
@@ -24,6 +23,10 @@
       <%= image_tag 'small-loupe-icon.png' %>
     <% end %>
   <% else %>
+    <div class="popup-helper slideDown">
+      <a class="close-white"><span>&times;</span></a>
+        <%= t '.checkout', default: "Je sors de la file d'attente" %>
+    </div>
     <%= link_to authenticated_root_path do %>
       <%= image_tag 'small-loupe-icon.png', class: "search-left" %>
     <% end %>
