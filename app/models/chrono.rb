@@ -10,6 +10,7 @@
 #  manually_added_duration_in_minutes :integer
 #  created_at                         :datetime         not null
 #  updated_at                         :datetime         not null
+#  quit                               :boolean
 #
 # Indexes
 #

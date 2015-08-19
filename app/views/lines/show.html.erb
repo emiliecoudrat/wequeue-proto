@@ -112,7 +112,6 @@
     <%= f.submit 'launch', class: 'hidden' %>
   <% end %>
 </footer>
-
 <%= content_for :after_js do %>
   <%= javascript_tag do %>
     <% if @line.has_at_least_one_checkout? %>
