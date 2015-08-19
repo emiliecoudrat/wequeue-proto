@@ -43,6 +43,9 @@ class ChronosController < ApplicationController
     redirect_to chrono_path(@chrono)
   end
 
+  def equivalence
+  end
+
   def edit
     @chrono.checked_out_at = nil
     @chrono.save
@@ -50,7 +53,7 @@ class ChronosController < ApplicationController
 
   def update
     if @chrono.update(chrono_params)
-      redirect_to thanks_path
+      redirect_to equivalence_path(@chrono)
     else
       render :edit
     end
