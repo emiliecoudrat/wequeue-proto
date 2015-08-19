@@ -53,7 +53,7 @@ class ChronosController < ApplicationController
 
   def update
     if @chrono.update(chrono_params)
-      redirect_to equivalence_path(@chrono)
+      redirect_to equivalence_chrono_path(@chrono)
     else
       render :edit
     end

@@ -3,8 +3,20 @@
     <div class="col-xs-12">
       <div class="chrono-equivalence">
         <p class="line-name">
-          <%= @chrono.line.name %>
+          <%= @chrono.line.place.name %>
         </p>
+        <div class="equivalence">
+          <div class="waiting-time">
+            <%= t '.have_waited', default: "J'ai attendu" %> <%= @chrono.total_duration_in_string %>
+          </div>
+          <div class="place">
+            <%= t '.place', default: "à #{@chrono.line.place.name}" %>
+          </div>
+          <div class="joke">
+            <%= t '.joke', default: "soit #{@chrono.joke}" %>
+          </div>
+          <div class="share"></div>
+        </div>
       </div>
     </div>
   </div>

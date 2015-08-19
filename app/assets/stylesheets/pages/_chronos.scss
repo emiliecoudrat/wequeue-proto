@@ -1,6 +1,7 @@
 .chrono-show,
 .chrono-edit,
-.chrono-stop {
+.chrono-stop,
+.chrono-equivalence {
   text-align: center;
   padding-top: 15px;
   padding-bottom: 120px;
@@ -85,6 +86,14 @@
       white-space: normal;
       border-radius: 10px;
     }
+  }
+  .equivalence {
+    background-color: $red;
+    color: white;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 60px;
   }
 }
 .chrono-stop {
