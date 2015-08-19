@@ -9,10 +9,16 @@
           </p>
           <div id="timer-frame">
             <div id="timer">
-              <%= @line.waiting_time %>
-              <div class="min">
-                min
-              </div>
+              <% if @line.waiting_time < 59 %>
+                <%= @line.waiting_time %>
+                <div class="min">
+                  min
+                </div>
+              <% else %>
+                <div class="long-waiting-time">
+                  <%= @line.long_waiting_time %>
+                </div>
+              <% end %>
             </div>
           </div>
         <% else %>
@@ -26,7 +32,7 @@
           </div>
         <% end %>
         <div class="chronos-stream">
-          <% @chronos.each  do |chrono| %>
+          <% @chronos.each do |chrono| %>
             <div class="chrono" id="chrono_<%= chrono.id %>">
               <div class="row">
                 <div class="col-xs-4 text-left">
@@ -44,12 +50,12 @@
                     <%= t '.date', default: "Date : " %><%= l chrono.created_at, format: '%d %B %Y' %>
                   </div>
                   <div class="checkin">
-                    <%= t '.checkin', default: "Entrée : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                    <%= t '.checkin', default: "Check in : " %><%= l chrono.created_at, format: '%Hh%M' %>
                   </div>
                   <% if chrono.total_duration %>
                     <% if chrono.checked_out_at %>
                       <div class="checkout">
-                        <%= t '.checkout', default: "Sortie : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
+                        <%= t '.checkout', default: "Check out : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
                       </div>
                     <% end %>
                     <div class="total">

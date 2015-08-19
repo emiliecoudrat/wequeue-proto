@@ -30,6 +30,10 @@ class Line < ActiveRecord::Base
     chronos.select { |chrono| chrono.done? }.sort_by(&:updated_at).last.total_duration.fdiv(60).floor if chronos.first && chronos.select { |chrono| chrono.done? }.sort_by(&:updated_at).last
   end
 
+  def long_waiting_time
+    "#{waiting_time / 60}h#{waiting_time % 60}"
+  end
+
   def has_a_running_chrono_with?(user)
     chronos.map { |chrono| chrono.user unless chrono.done? }.include?(user)
   end
