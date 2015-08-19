@@ -94,7 +94,7 @@
 <footer>
   <% unless current_user.running_chrono && !@line.has_a_running_chrono_with?(current_user) %>
     <div class="popup-helper slideDown">
-      <a class="close-white"><span>&times;</span></a>
+      <a class="close-white"><span>X</span></a>
       <% if @line.chronos.size == 0 %>
         <%= t '.first', default: "Soyez le premier à vous signaler dans la file d'attente." %>
       <% elsif !@line.has_a_running_chrono_with?(current_user) %>
