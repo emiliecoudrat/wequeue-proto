@@ -22,9 +22,9 @@ $(document).ready(function() {
         $('.infowindow span').on('click', function(event) {
           setTimeout(function() {
             $('.infowindow span').parent().parent().hide();
-          }, 50)
+          }, 100)
         })
-      }, 50)
+      }, 100)
     })
   }
 })

@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   resources :chronos, only: [:show, :edit, :update]
   get 'chronos/:id/stop', to: "chronos#stop", as: :stop_chrono
   get 'chronos/:id/restart', to: "chronos#restart", as: :restart_chrono
+  get 'chronos/:id/quit', to: "chronos#quit", as: :quit_chrono
   get 'thanks', to: "pages#thanks", as: :thanks
 end

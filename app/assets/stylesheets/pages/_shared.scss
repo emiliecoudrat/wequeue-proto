@@ -49,6 +49,18 @@ footer {
     padding: 10px 20px;
     border-radius: 10px;
   }
+  &-green {
+    background-color: $green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  &-orange {
+    background-color: $orange;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
 }
 .link-scred {
   color: #4A4A4A;
