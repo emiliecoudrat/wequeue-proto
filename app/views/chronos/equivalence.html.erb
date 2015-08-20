@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="chrono-equivalence">
+        <p class="line-name">
+          <%= @chrono.line.place.name %>
+        </p>
+        <div class="equivalence">
+          <div class="waiting-time">
+            <%= t '.have_waited', default: "J'ai attendu" %> <span><%= @chrono.total_duration_in_string %></span>
+          </div>
+          <div class="place">
+            <%= t '.place', default: "à #{@chrono.line.place.name}" %>
+          </div>
+          <div class="joke">
+            <%= t '.joke', default: "soit #{@chrono.joke}" %>
+          </div>
+          <div class="share">
+            <%= link_to "#" do %>
+              <%= image_tag "fb-equivalence.png" %>
+            <% end %>
+            <%= link_to "#" do %>
+              <%= image_tag "tt-equivalence.png" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

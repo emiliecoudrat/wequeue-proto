@@ -9,10 +9,16 @@
           </p>
           <div id="timer-frame">
             <div id="timer">
-              <%= @line.waiting_time %>
-              <div class="min">
-                min
-              </div>
+              <% if @line.waiting_time < 59 %>
+                <%= @line.waiting_time %>
+                <div class="min">
+                  min
+                </div>
+              <% else %>
+                <div class="long-waiting-time">
+                  <%= @line.long_waiting_time %>
+                </div>
+              <% end %>
             </div>
           </div>
         <% else %>
@@ -26,7 +32,7 @@
           </div>
         <% end %>
         <div class="chronos-stream">
-          <% @chronos.each  do |chrono| %>
+          <% @chronos.each do |chrono| %>
             <div class="chrono" id="chrono_<%= chrono.id %>">
               <div class="row">
                 <div class="col-xs-4 text-left">
@@ -44,12 +50,12 @@
                     <%= t '.date', default: "Date : " %><%= l chrono.created_at, format: '%d %B %Y' %>
                   </div>
                   <div class="checkin">
-                    <%= t '.checkin', default: "Entrée : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                    <%= t '.checkin', default: "Check in : " %><%= l chrono.created_at, format: '%Hh%M' %>
                   </div>
                   <% if chrono.total_duration %>
                     <% if chrono.checked_out_at %>
                       <div class="checkout">
-                        <%= t '.checkout', default: "Sortie : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
+                        <%= t '.checkout', default: "Check out : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
                       </div>
                     <% end %>
                     <div class="total">
@@ -76,9 +82,9 @@
                         <div class="post-content">
                           <%= simple_format "« " + post.content + " »" %>
                         </div>
-                          <div class="post-picture">
-                            <%= image_tag post.picture.url(:medium) if post.picture_file_name %>
-                          </div>
+                        <div class="post-picture">
+                          <%= image_tag post.picture.url(:medium) if post.picture_file_name %>
+                        </div>
                       </div>
                     </div>
                   <% end %>
@@ -94,7 +100,7 @@
 <footer>
   <% unless current_user.running_chrono && !@line.has_a_running_chrono_with?(current_user) %>
     <div class="popup-helper slideDown">
-      <a class="close-white"><span>&times;</span></a>
+      <a class="close-white"><span>X</span></a>
       <% if @line.chronos.size == 0 %>
         <%= t '.first', default: "Soyez le premier à vous signaler dans la file d'attente." %>
       <% elsif !@line.has_a_running_chrono_with?(current_user) %>
@@ -112,11 +118,11 @@
     <%= f.submit 'launch', class: 'hidden' %>
   <% end %>
 </footer>
-
 <%= content_for :after_js do %>
   <%= javascript_tag do %>
     <% if @line.has_at_least_one_checkout? %>
       line(<%= @line.waiting_time %>)
     <% end %>
+    chronos('<%= @line.running_chronos_data %>')
   <% end %>
 <% end %>
