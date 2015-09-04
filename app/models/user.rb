@@ -70,4 +70,8 @@ class User < ActiveRecord::Base
   def running_chrono
     Chrono.find_by(user: self, checked_out_at: nil, manually_added_duration_in_minutes: nil)
   end
+
+  def sentence_to_share_cumulated
+    "J'ai attendu #{cumulated_duration_in_string} depuis que j'utilise weQueue"
+  end
 end

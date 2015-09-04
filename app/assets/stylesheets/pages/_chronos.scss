@@ -50,9 +50,14 @@
     .col-xs-6 {
       padding: 0 8px;
     }
+    .btn-orange,
     .btn-gray,
     .btn-red {
       margin-top: 16px;
+    }
+    .btn-gray,
+    .btn-orange {
+      max-width: 100px;
     }
   }
   .waiting-since {
@@ -134,10 +139,15 @@
     white-space: normal;
     color: white;
     border-radius: 10px;
-    max-width: 100px;
     &-red {
+      width: 220px;
       background-color: $red;
       padding: 10px 20px;
+    }
+    &-green {
+      width: 220px;
+      height: 64px;
+      padding-top: 20px;
     }
   }
 }

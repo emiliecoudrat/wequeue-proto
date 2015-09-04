@@ -18,6 +18,7 @@
           <%= t '.cumulated_time', default: "Votre temps d'attente cumulé" %>
           <div id="timer">
             <%= @user.cumulated_duration_in_string %>
+            <%= social_share_button_tag(@user.sentence_to_share_cumulated, url: "http://www.wequeue.com", image: image_url('logo-rs.png'), desc: "Queue less, party more", via: "wequeue") %>
           </div>
         </div>
       </div>
