@@ -16,12 +16,7 @@
             <%= t '.joke', default: "soit #{@chrono.joke}" %>
           </div>
           <div class="share">
-            <%= link_to "#" do %>
-              <%= image_tag "fb-equivalence.png" %>
-            <% end %>
-            <%= link_to "#" do %>
-              <%= image_tag "tt-equivalence.png" %>
-            <% end %>
+            <%= social_share_button_tag(@chrono.sentence_to_share, url: "https://wequeue-proto-production.herokuapp.com") %>
           </div>
         </div>
       </div>

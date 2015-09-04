@@ -85,6 +85,10 @@ class Chrono < ActiveRecord::Base
     total_duration ? true : false
   end
 
+  def sentence_to_share
+    "J'ai attendu #{total_duration_in_string} à #{line.place.name} soit #{joke}"
+  end
+
   def joke
     if total_duration_in_minutes <= 5
       joke = "le temps moyen d'un rapport sexuel chez les mouches tsé-tsé"
