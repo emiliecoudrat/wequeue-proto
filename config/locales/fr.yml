@@ -21,3 +21,7 @@
 
 fr:
   hello: "Hello monde"
+  social_share_button:
+    twitter: "twitter"
+    share_to: "share_to"
+    facebook: "facebook"

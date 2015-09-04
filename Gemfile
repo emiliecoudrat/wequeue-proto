@@ -28,6 +28,7 @@ gem "geocoder"
 gem "gmaps4rails"
 gem "rails-assets-underscore"
 gem 'bootstrap-slider-rails'
+gem 'social-share-button'
 
 group :development, :test do
   gem "spring"

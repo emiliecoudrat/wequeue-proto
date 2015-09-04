@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) || "Wagon Rails" %></title>
+  <title><%= yield(:title) %></title>
   <meta name="description" content="<%= (yield(:description) || "").squish %>">
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- FACEBOOK -->
+  <meta property="og:title" content="weQueue">
+  <meta property="og:image" content="<%= image_url('logo-rs.png') %>">
+  <meta property="og:description" content="Queue less, party more">
+  <meta property="og:site_name" content="weQueue"/>
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="wequeue.com">
+  <meta name="twitter:title" content="weQueue">
+  <meta name="twitter:description" content="Queue less, party more">
+  <meta name="twitter:creator" content="@wequeue">
+  <meta name="twitter:image:src" content="<%= image_url('logo-rs.png') %>">
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render "shared/flashes" %>
-
   <%= yield %>
-
   <%= javascript_include_tag :application %>
   <%= yield(:after_js) %>
 </body>
