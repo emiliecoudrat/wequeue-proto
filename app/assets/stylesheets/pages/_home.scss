@@ -31,13 +31,13 @@
     }
   }
   a {
-    color: $red;
     width: 100%;
     &:hover {
       text-decoration: none;
     }
   }
   .fb-connect {
+    color: $red;
     padding: 15px;
     background-color: white;
     width: 100%;
