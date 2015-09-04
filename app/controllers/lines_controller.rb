@@ -66,6 +66,12 @@ class LinesController < ApplicationController
   def show
     @chronos = @line.chronos.sort_by(&:created_at).reverse
     @chrono = Chrono.new
+    @older_lines = @line.place.lines.where("created_at >=?", DateTime.now - 8).reject { |line| line == @line }
+    @older_chronos = []
+    @older_lines.each do |line|
+      @older_chronos << line.chronos
+    end
+    @older_chronos = @older_chronos.flatten.sort_by(&:created_at).reverse
   end
 
   private
