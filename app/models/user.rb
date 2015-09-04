@@ -72,6 +72,53 @@ class User < ActiveRecord::Base
   end
 
   def sentence_to_share_cumulated
-    "J'ai attendu #{cumulated_duration_in_string} depuis que j'utilise weQueue"
+    "J'ai attendu #{cumulated_duration_in_string} dans des files d'attentes soit #{joke}"
+  end
+
+  def joke
+    if cumulated_duration_in_seconds / 60 <= 5
+      joke = JOKES[0]
+    elsif cumulated_duration_in_seconds / 60 <= 10
+      joke = JOKES[1]
+    elsif cumulated_duration_in_seconds / 60 <= 15
+      joke = JOKES[2]
+    elsif cumulated_duration_in_seconds / 60 <= 20
+      joke = JOKES[3]
+    elsif cumulated_duration_in_seconds / 60 <= 25
+      joke = JOKES[4]
+    elsif cumulated_duration_in_seconds / 60 <= 30
+      joke = JOKES[5]
+    elsif cumulated_duration_in_seconds / 60 <= 35
+      joke = JOKES[6]
+    elsif cumulated_duration_in_seconds / 60 <= 40
+      joke = JOKES[7]
+    elsif cumulated_duration_in_seconds / 60 <= 45
+      joke = JOKES[8]
+    elsif cumulated_duration_in_seconds / 60 <= 50
+      joke = JOKES[9]
+    elsif cumulated_duration_in_seconds / 60 <= 55
+      joke = JOKES[10]
+    elsif cumulated_duration_in_seconds / 60 <= 60
+      joke = JOKES[11]
+    elsif cumulated_duration_in_seconds / 60 <= 70
+      joke = JOKES[12]
+    elsif cumulated_duration_in_seconds / 60 <= 80
+      joke = JOKES[13]
+    elsif cumulated_duration_in_seconds / 60 <= 90
+      joke = JOKES[14]
+    elsif cumulated_duration_in_seconds / 60 <= 100
+      joke = JOKES[15]
+    elsif cumulated_duration_in_seconds / 60 <= 110
+      joke = JOKES[16]
+    elsif cumulated_duration_in_seconds / 60 <= 120
+      joke = JOKES[17]
+    elsif cumulated_duration_in_seconds / 60 <= 130
+      joke = JOKES[18]
+    elsif cumulated_duration_in_seconds / 60 <= 140
+      joke = JOKES[19]
+    else
+      joke = JOKES[20]
+    end
+    joke
   end
 end

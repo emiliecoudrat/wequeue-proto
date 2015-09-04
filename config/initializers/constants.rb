@@ -1,0 +1,23 @@
+JOKES = [
+  "le temps moyen d'un rapport sexuel chez les mouches tsé-tsé",
+  "le temps de trop cuire un œuf à la coque",
+  "le temps que met Depardieu à siffler trois bouteilles de rouge",
+  "la durée du dernier album de Justin Bieber",
+  "le temps que met Florent Manaudou pour traverser la Manche dans les deux sens à la nage",
+  "le temps que met Paris Hilton pour claquer 20 000$ en Champagne dans une soirée",
+  "le temps de faire trois stations sur la ligne 13 un lundi matin",
+  "le temps que Gainsbourg mettait pour fumer son premier paquet de clopes chaque matin",
+  "le temps que met Le Père Fourras chaque soir pour retirer son dentier",
+  "le temps que met pour Lance Armstrong pour monter le Mont Blanc avec double dose de dopage",
+  "le temps moyen que mettent les Belges pour comprendre les blagues sur eux",
+  "le temps moyen passé aux toilettes après avoir mangé un burito",
+  "le temps qu'a pris le 322ème lifting de Cher (le plus rapide de l'année 2014)",
+  "le temps de cuisson des dubitchous dans le Père Noël est une ordure (préalablement roulés sous les aisselles !!)",
+  "le temps moyen que les Français dorment devant un film ukrainien.",
+  "le temps que met Madonna pour se ravaler la façade chaque matin",
+  "la durée de cuisson d'une pizza bien trop cuite",
+  "le temps que mettent les parisiens pour atteindre la petite couronne en voiture un vendredi soir",
+  "le temps que les anglais passent chaque année à manger de la gelée",
+  "le temps moyen que passe un italien à draguer chaque jour",
+  "le temps que mettent les russes avant de ressentir les premiers effets de l'alcool après avoir bu 2 bouteilles de Vodka"
+]

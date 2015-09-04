@@ -91,47 +91,47 @@ class Chrono < ActiveRecord::Base
 
   def joke
     if total_duration_in_minutes <= 5
-      joke = "le temps moyen d'un rapport sexuel chez les mouches tsé-tsé"
+      joke = JOKES[0]
     elsif total_duration_in_minutes <= 10
-      joke = "le temps de trop cuire un œuf à la coque"
+      joke = JOKES[1]
     elsif total_duration_in_minutes <= 15
-      joke = "le temps que met Depardieu à siffler trois bouteilles de rouge"
+      joke = JOKES[2]
     elsif total_duration_in_minutes <= 20
-      joke = "la durée du dernier album de Justin Bieber"
+      joke = JOKES[3]
     elsif total_duration_in_minutes <= 25
-      joke = "le temps que met Florent Manaudou pour traverser la Manche dans les deux sens à la nage"
+      joke = JOKES[4]
     elsif total_duration_in_minutes <= 30
-      joke = "le temps que met Paris Hilton pour claquer 20 000$ en Champagne dans une soirée"
+      joke = JOKES[5]
     elsif total_duration_in_minutes <= 35
-      joke = "le temps de faire trois stations sur la ligne 13 un lundi matin"
+      joke = JOKES[6]
     elsif total_duration_in_minutes <= 40
-      joke = "le temps que Gainsbourg mettait pour fumer son premier paquet de clopes chaque matin"
+      joke = JOKES[7]
     elsif total_duration_in_minutes <= 45
-      joke = "le temps que met Le Père Fourras chaque soir pour retirer son dentier"
+      joke = JOKES[8]
     elsif total_duration_in_minutes <= 50
-      joke = "le temps que met pour Lance Armstrong pour monter le Mont Blanc avec double dose de dopage"
+      joke = JOKES[9]
     elsif total_duration_in_minutes <= 55
-      joke = "le temps moyen que mettent les Belges pour comprendre les blagues sur eux"
+      joke = JOKES[10]
     elsif total_duration_in_minutes <= 60
-      joke = "le temps moyen passé aux toilettes après avoir mangé un burito"
+      joke = JOKES[11]
     elsif total_duration_in_minutes <= 70
-      joke = "le temps qu'a pris le 322ème lifting de Cher (le plus rapide de l'année 2014)"
+      joke = JOKES[12]
     elsif total_duration_in_minutes <= 80
-      joke = "le temps de cuisson des dubitchous dans le Père Noël est une ordure (préalablement roulés sous les aisselles !!)"
+      joke = JOKES[13]
     elsif total_duration_in_minutes <= 90
-      joke = "le temps moyen que les Français dorment devant un film ukrainien."
+      joke = JOKES[14]
     elsif total_duration_in_minutes <= 100
-      joke = "le temps que met Madonna pour se ravaler la façade chaque matin"
+      joke = JOKES[15]
     elsif total_duration_in_minutes <= 110
-      joke = "la durée de cuisson d'une pizza bien trop cuite"
+      joke = JOKES[16]
     elsif total_duration_in_minutes <= 120
-      joke = "le temps que mettent les parisiens pour atteindre la petite couronne en voiture un vendredi soir"
+      joke = JOKES[17]
     elsif total_duration_in_minutes <= 130
-      joke = "le temps que les anglais passent chaque année à manger de la gelée"
+      joke = JOKES[18]
     elsif total_duration_in_minutes <= 140
-      joke = "le temps moyen que passe un italien à draguer chaque jour"
+      joke = JOKES[19]
     else
-      joke = "le temps que mettent les russes avant de ressentir les premiers effets de l'alcool après avoir bu 2 bouteilles de Vodka"
+      joke = JOKES[20]
     end
     joke
   end
