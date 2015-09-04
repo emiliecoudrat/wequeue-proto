@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.city = auth.info.location if auth.info.location
       user.birthday = Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y') if auth.extra.raw_info.birthday
-      user.picture = auth.info.image.gsub('http', 'https') + "?type=large"
+      user.picture = auth.info.image.gsub('http', 'https') + "?width=200&height=200"
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
