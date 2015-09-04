@@ -16,20 +16,18 @@
         <div class="actions">
           <div class="row">
             <div class="col-xs-12">
-              <%= link_to t('.confirm', default: "Oui, je valide"), equivalence_chrono_path(@chrono), class: "btn btn-green" %>
+              <%= link_to t('.confirm', default: "OUI,<br>je valide".html_safe), equivalence_chrono_path(@chrono), class: "btn btn-green" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6 text-right">
-              <%= link_to t('.oups', default: "Oups, pas fini"), restart_chrono_path(@chrono), class: "btn btn-gray" %>
+            <div class="col-xs-4 no-padding">
+              <%= link_to t('.manual', default: "NON, j'ajuste"), edit_chrono_path(@chrono), class: "btn btn-orange" %>
             </div>
-            <div class="col-xs-6 text-left">
-              <%= link_to t('.manual', default: "Non, j'ajuste"), edit_chrono_path(@chrono), class: "btn btn-orange" %>
+            <div class="col-xs-4 no-padding">
+              <%= link_to t('.manual', default: "EUH, j'ai abandonné"), quit_chrono_path(@chrono), class: "btn btn-red" %>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= link_to t('.manual', default: "J'ai lâché"), quit_chrono_path(@chrono), class: "btn btn-red" %>
+            <div class="col-xs-4 no-padding">
+              <%= link_to t('.oups', default: "OUPS, j'ai pas fini"), restart_chrono_path(@chrono), class: "btn btn-gray" %>
             </div>
           </div>
         </div>
