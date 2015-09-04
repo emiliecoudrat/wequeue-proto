@@ -1,8 +1,8 @@
 <%= content_for(:title) do %>
-  Home
+  <%= t '.title', default: "weQueue" %>
 <% end %>
 <%= content_for(:description) do %>
-  <%# TODO %>
+  <%= t '.description', default: "Queue less, party more" %>
 <% end %>
 <div class="container container-home">
   <div class="row">
@@ -42,7 +42,4 @@
       </div>
     <% end %>
   </div>
-
-
-
 </div>

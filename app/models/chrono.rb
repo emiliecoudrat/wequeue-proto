@@ -85,7 +85,7 @@ class Chrono < ActiveRecord::Base
     total_duration ? true : false
   end
 
-  def sentence_to_share
+  def sentence_to_share_equivalence
     "J'ai attendu #{total_duration_in_string} à #{line.place.name} soit #{joke}"
   end
 
