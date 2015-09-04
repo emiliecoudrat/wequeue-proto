@@ -10,4 +10,26 @@
     padding-left: 50px;
     padding-right: 50px;
   }
+  .social {
+    text-align: center;
+    .social-share-button {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: $red;
+      &-facebook {
+        width: 22px;
+        height: 40px;
+        background: image-url("fb-equivalence.png") no-repeat;
+        background-size: 22px 40px;
+        margin: 0 10px;
+      }
+      &-twitter {
+        width: 48px;
+        height: 40px;
+        background: image-url("tt-equivalence.png") no-repeat;
+        background-size: 48px 40px;
+        margin: 0 10px;
+      }
+    }
+  }
 }
