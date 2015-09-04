@@ -50,12 +50,12 @@
                     <%= t '.date', default: "Date : " %><%= l chrono.created_at, format: '%d %B %Y' %>
                   </div>
                   <div class="checkin">
-                    <%= t '.checkin', default: "Check in : " %><%= l chrono.created_at, format: '%Hh%M' %>
+                    <%= t '.checkin', default: "Check-in : " %><%= l chrono.created_at, format: '%Hh%M' %>
                   </div>
                   <% if chrono.total_duration %>
                     <% if chrono.checked_out_at %>
                       <div class="checkout">
-                        <%= t '.checkout', default: "Check out : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
+                        <%= t '.checkout', default: "Check-out : " %><%= l chrono.checked_out_at, format: '%Hh%M' %>
                       </div>
                     <% end %>
                     <div class="total">
@@ -80,7 +80,7 @@
                     <div class="col-xs-12">
                       <div class="post">
                         <div class="post-content">
-                          <%= simple_format "« " + post.content + " »" %>
+                          <%= simple_format post.content != "" ? "« " + post.content + " »" : "Pas de description" %>
                         </div>
                         <div class="post-picture">
                           <%= image_tag post.picture.url(:medium) if post.picture_file_name %>
