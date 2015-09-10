@@ -27,6 +27,7 @@
         </div>
         <%= form_for [@chrono, @post], html: { multipart: true } do |f| %>
           <ul class="list-unstyled list-inline">
+            <li id="post-preview"><%= image_tag "", class: "img-post-preview", id: "target" %></li>
             <li id="placeholder"></li>
             <li class="hidden" id="check"><i class="fa fa-check"></i></li>
           </ul>

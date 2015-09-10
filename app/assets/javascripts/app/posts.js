@@ -13,4 +13,13 @@ $(document).ready(function() {
   $('form input').on('click', function() {
     $(this).disabled = true
   })
+  $('#post_picture').on('change', function(event) {
+    var files = event.target.files
+    var image = files[0]
+    var reader = new FileReader()
+    reader.onload = function(file) {
+      $('#target').attr('src', file.target.result)
+    }
+    reader.readAsDataURL(image)
+  })
 })

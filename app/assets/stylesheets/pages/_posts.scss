@@ -34,6 +34,15 @@
   form > ul > li {
     color: $green;
   }
+  form {
+    #post-preview {
+      margin: 0 -45px;
+      padding: 0;
+    }
+    .img-post-preview {
+      width: 100%;
+    }
+  }
   label.classic-label {
     font-weight: 300;
     float: left;
