@@ -35,6 +35,13 @@ module WequeueProto
 
     config.i18n.default_locale = :fr
     config.action_controller.action_on_unpermitted_parameters = :raise
+    config.to_prepare do
+      Devise::SessionsController.layout "home"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application"   : "home" }
+      Devise::ConfirmationsController.layout "home"
+      Devise::UnlocksController.layout "home"
+      Devise::PasswordsController.layout "home"
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

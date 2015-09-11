@@ -1,45 +1,47 @@
-<nav class="navbar navbar-fixed-top navbar-wagon">
-  <%= render "shared/flashes" %>
-  <div class="container navbar-wagon-container">
-    <div class="navbar-header text-center">
-      <ul class="list-inline list-unstyled">
-        <li>
-          <%= link_to root_path do %>
-            <%= image_tag "logo-blanc.png", class: "navbar-wagon-logo" %>
-          <% end %>
-        </li>
-        <li class="pull-right dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <button type="button" class="navbar-toggle collapsed" id="menu" data-toggle="collapse" data-target="#dropdown-menu">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </a>
-        </li>
-        <ul class="dropdown-menu pull-right" id="dropdown-menu" role="menu">
+<% if user_signed_in? %>
+  <nav class="navbar navbar-fixed-top navbar-wagon">
+    <%= render "shared/flashes" %>
+    <div class="container navbar-wagon-container">
+      <div class="navbar-header text-center">
+        <ul class="list-inline list-unstyled">
           <li>
-            <%= link_to user_path(current_user) do %>
-              <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<%= t ".profile", default: "Mon profil" %>
+            <%= link_to root_path do %>
+              <%= image_tag "logo-blanc.png", class: "navbar-wagon-logo" %>
             <% end %>
           </li>
-          <!-- <li>
-            <%= link_to "#" do %>
-              &nbsp;<i class="fa fa-question"></i>&nbsp;&nbsp;&nbsp;<%= t ".explain", default: "Comment ça marche ?" %>
-            <% end %>
-          </li> -->
-          <li>
-            <%= mail_to "hello@wequeue.com" do %>
-              <i class="fa fa-send"></i>&nbsp;&nbsp;<%= t ".contact", default: "Nous contacter" %>
-            <% end %>
+          <li class="pull-right dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <button type="button" class="navbar-toggle collapsed" id="menu" data-toggle="collapse" data-target="#dropdown-menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </a>
           </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-power-off"></i>&nbsp;&nbsp;&nbsp;<%= t ".sign_out", default: "Déconnexion" %>
-            <% end %>
-          </li>
+          <ul class="dropdown-menu pull-right" id="dropdown-menu" role="menu">
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<%= t ".profile", default: "Mon profil" %>
+              <% end %>
+            </li>
+            <!-- <li>
+              <%= link_to "#" do %>
+                &nbsp;<i class="fa fa-question"></i>&nbsp;&nbsp;&nbsp;<%= t ".explain", default: "Comment ça marche ?" %>
+              <% end %>
+            </li> -->
+            <li>
+              <%= mail_to "hello@wequeue.com" do %>
+                <i class="fa fa-send"></i>&nbsp;&nbsp;<%= t ".contact", default: "Nous contacter" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-power-off"></i>&nbsp;&nbsp;&nbsp;<%= t ".sign_out", default: "Déconnexion" %>
+              <% end %>
+            </li>
+          </ul>
         </ul>
-      </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<% end %>
