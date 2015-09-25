@@ -27,7 +27,7 @@ class Line < ActiveRecord::Base
   end
 
   def waiting_time
-    chronos.select { |chrono| chrono.done? }.sort_by(&:updated_at).last.total_duration.fdiv(60).floor if chronos.first && chronos.select { |chrono| chrono.done? }.sort_by(&:updated_at).last
+    chronos.select { |chrono| chrono.done? && !chrono.quit }.sort_by(&:updated_at).last.total_duration.fdiv(60).floor if chronos.first && chronos.select { |chrono| chrono.done? && !chrono.quit }.sort_by(&:updated_at).last
   end
 
   def long_waiting_time

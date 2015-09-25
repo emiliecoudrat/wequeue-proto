@@ -12,7 +12,7 @@
               <%= f.text_field :manually_added_duration_in_minutes, data: {
                 'slider-id' => 'ex1Slider',
                 'slider-min' => '0',
-                'slider-max' => '120',
+                'slider-max' => '180',
                 'slider-step' => '1',
                 'slider-value' => "#{@chrono.duration_since_checkin.floor / 60}"
               } %>

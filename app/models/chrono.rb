@@ -50,8 +50,16 @@ class Chrono < ActiveRecord::Base
     total_duration.fdiv(60).round(0)
   end
 
+  def total_duration_in_hours
+    total_duration_in_minutes.fdiv(60).round
+  end
+
   def total_duration_in_string
     "#{(total_duration / 3600).floor}:#{(total_duration % 3600 / 60) < 10 ? "0" + (total_duration % 3600 / 60).floor.to_s : (total_duration % 3600 / 60).floor}:#{((total_duration % 3600 % 60)) < 10 ? "0" + ((total_duration % 3600 % 60)).floor.to_s : ((total_duration % 3600 % 60)).floor}" if total_duration
+  end
+
+  def total_duration_in_string_format_french
+    "#{(total_duration / 3600).floor}h #{(total_duration % 3600 / 60) < 10 ? "0" + (total_duration % 3600 / 60).floor.to_s : (total_duration % 3600 / 60).floor}min #{((total_duration % 3600 % 60)) < 10 ? "0" + ((total_duration % 3600 % 60)).floor.to_s : ((total_duration % 3600 % 60)).floor}sec" if total_duration
   end
 
   def hours
@@ -86,7 +94,11 @@ class Chrono < ActiveRecord::Base
   end
 
   def sentence_to_share_equivalence
-    "J'ai attendu #{total_duration_in_string} à #{line.place.name} soit #{joke}"
+    if total_duration_in_minutes > 300
+      "J'ai attendu #{total_duration_in_hours}h à #{line.place.name} soit #{joke}"
+    else
+      "J'ai attendu #{total_duration_in_string_format_french} à #{line.place.name} soit #{joke}"
+    end
   end
 
   def joke

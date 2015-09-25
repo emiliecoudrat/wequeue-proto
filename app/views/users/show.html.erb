@@ -18,7 +18,12 @@
           <%= t '.cumulated_time', default: "Votre temps d'attente cumulé" %>
           <div id="timer">
             <%= @user.cumulated_duration_in_string %>
-            <%= social_share_button_tag(@user.sentence_to_share_cumulated, url: "http://www.wequeue.com", image: image_url('logo-rs.png'), desc: "Queue less, party more", via: "wequeue") %>
+            <% unless @user.cumulated_duration_in_seconds > 180 * 3600 %>
+              <div class="social-share-button">
+                <%= link_to "", "https://www.facebook.com/sharer/sharer.php?u=http://www.wequeue.com", class: "social-share-button-facebook", target: "_blank" %>
+                <%= link_to "", "http://twitter.com/home?status=#{@user.sentence_to_share_cumulated} via @wequeue", class: "social-share-button-twitter", target: "_blank" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
