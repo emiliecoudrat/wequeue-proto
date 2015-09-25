@@ -21,7 +21,7 @@
             <% unless @user.cumulated_duration_in_seconds > 180 * 3600 %>
               <div class="social-share-button">
                 <%= link_to "", "https://www.facebook.com/sharer/sharer.php?u=http://www.wequeue.com", class: "social-share-button-facebook", target: "_blank" %>
-                <%= link_to "", "http://twitter.com/home?status=#{@user.sentence_to_share_cumulated} via @wequeue", class: "social-share-button-twitter", target: "_blank" %>
+                <%= link_to "", "http://twitter.com/intent/tweet?status=#{@user.sentence_to_share_cumulated} via @wequeue", class: "social-share-button-twitter", target: "_blank" %>
               </div>
             <% end %>
           </div>
