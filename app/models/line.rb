@@ -31,7 +31,7 @@ class Line < ActiveRecord::Base
   end
 
   def long_waiting_time
-    "#{waiting_time / 60}h#{waiting_time % 60}"
+    "#{waiting_time / 60}h#{(waiting_time % 60) < 10 ? '0' + waiting_time % 60 : waiting_time % 60 }"
   end
 
   def has_a_running_chrono_with?(user)
