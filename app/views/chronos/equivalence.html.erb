@@ -1,3 +1,10 @@
+
+<head>
+  <meta property="og:title" content="weQueue">
+  <meta property="og:image" content="<%= image_url('logo-rs.png') %>">
+  <meta property="og:description" content="<%= @chrono.sentence_to_share_equivalence %>">
+  <meta property="og:site_name" content="weQueue"/>
+</head>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -16,7 +23,7 @@
             <%= t '.joke', default: "soit #{@chrono.joke}" %>
           </div>
           <div class="share">
-            <%= social_share_button_tag(@chrono.sentence_to_share_equivalence, url: "http://www.wequeue.com", image: image_url('logo-rs.png'), desc: "Queue less, party more", via: "wequeue") %>
+            <%= social_share_button_tag(@chrono.sentence_to_share_equivalence) %>
           </div>
         </div>
       </div>
